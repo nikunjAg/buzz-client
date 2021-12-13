@@ -1,0 +1,33 @@
+.Search {
+	padding: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	background-color: #fff;
+}
+
+.Avatar {
+	height: 32px;
+	width: 32px;
+
+	border-radius: 50%;
+
+	border: 1px solid #eee;
+}
+
+.SearchBar {
+	outline: none;
+	border-image: none;
+
+	border: none;
+	border-radius: 16px;
+	margin: 0 8px;
+
+	background: #eee;
+	padding: 8px 14px;
+	flex: 1;
+}
+
+.ImagePicker {
+}

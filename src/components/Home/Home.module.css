@@ -1,0 +1,25 @@
+.Home {
+	display: flex;
+	justify-content: space-between;
+	height: calc(100vh - 4rem);
+
+	background-color: #ddd;
+}
+
+.Left {
+	height: 100%;
+	flex: 0.25;
+
+	display: flex;
+	justify-content: flex-end;
+}
+
+.Main {
+	height: 100%;
+	flex: 0.5;
+}
+
+.Right {
+	height: 100%;
+	flex: 0.25;
+}

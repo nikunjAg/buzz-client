@@ -17,7 +17,7 @@ const Header = () => {
 					<div className={classes.UserName}>Nikunj Aggarwal</div>
 				</div>
 				<div className={classes.Icon}>
-					<span class="material-icons">notifications</span>
+					<span className="material-icons">notifications</span>
 				</div>
 			</div>
 		</header>

@@ -34,9 +34,18 @@
 
 .User {
 	margin-right: 1rem;
+	padding: 8px;
+	border-radius: 4px;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	cursor: pointer;
+}
+
+.User:hover {
+	background-color: #eee;
 }
 
 .Avatar {

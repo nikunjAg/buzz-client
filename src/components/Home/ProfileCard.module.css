@@ -1,0 +1,68 @@
+.ProfileCard {
+	width: 85%;
+}
+
+.ProfileBackground {
+	height: 4rem;
+	border-radius: 6px;
+}
+
+.ProfileImage {
+	height: 4.5rem;
+	width: 4.5rem;
+	margin: 0 auto 1rem auto;
+	margin-top: -2rem;
+
+	padding: 3px;
+	border-radius: 50%;
+
+	background-color: #fff;
+}
+
+.ProfileImage > img {
+	width: calc(100%);
+	height: calc(100%);
+	object-fit: contain;
+
+	border-radius: 50%;
+}
+
+.ProfileData {
+	text-align: center;
+}
+
+.ProfileData > h3 {
+	font-size: 0.95rem;
+	margin-bottom: 5px;
+	font-weight: 500;
+
+	color: #222;
+}
+
+.ProfileData > p {
+	font-size: 0.85rem;
+	font-weight: 400;
+
+	color: #555;
+}
+
+.PostsCount {
+	margin: 0.8rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Order Matters */
+.PostsCount > span {
+	color: #666;
+	font-size: 0.8rem;
+}
+
+.PostsCount > .Count {
+	font-weight: 500;
+	font-size: 0.95rem;
+
+	color: #333;
+}

@@ -2,7 +2,7 @@
 	padding: 0.7rem;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 
 	background-color: #fff;
 }
@@ -10,7 +10,7 @@
 .Avatar {
 	height: 32px;
 	width: 32px;
-
+	margin-right: 3px;
 	border-radius: 50%;
 
 	border: 1px solid #eee;
@@ -20,14 +20,46 @@
 	outline: none;
 	border-image: none;
 
+	width: calc(100% - 32px - 129px - 10px);
+
 	border: none;
 	border-radius: 16px;
-	margin: 0 8px;
+	margin: 0 12px 0 8px;
 
 	background: #eee;
 	padding: 8px 14px;
-	flex: 1;
 }
 
 .ImagePicker {
+	margin-left: auto;
+}
+
+.ImagePicker > label {
+	padding: 5px 10px;
+	font-size: 0.8rem;
+	color: #555;
+
+	border-radius: 4px;
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+
+	white-space: nowrap;
+
+	transition: 0.1s ease-in;
+}
+
+.ImagePicker > label > span {
+	color: #309730;
+	font-size: 1.2rem;
+	margin-right: 3px;
+}
+
+.ImagePicker > label:hover {
+	background-color: #ddd;
+}
+
+.ImagePicker > input {
+	display: none;
 }

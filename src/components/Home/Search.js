@@ -22,12 +22,20 @@ const Search = (props) => {
 				className={classes.SearchBar}
 				placeholder="Start a post..."
 			/>
-			<input
-				type="image"
-				name="post-image"
-				className={classes.ImagePicker}
-				alt="Post Image"
-			/>
+			<div className={classes.ImagePicker}>
+				<label htmlFor="image-picker">
+					<span className="material-icons-outlined">
+						photo_camera
+					</span>
+					Photos / Video
+				</label>
+				<input
+					type="file"
+					name="post-image"
+					id="image-picker"
+					alt="Post Image"
+				/>
+			</div>
 		</Card>
 	);
 };

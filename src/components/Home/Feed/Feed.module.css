@@ -1,0 +1,16 @@
+.SortController {
+	margin: 10px 0px;
+	font-size: 0.85rem;
+	color: #555;
+}
+
+.SortSelect {
+	background: transparent;
+	border: none;
+	outline: none;
+
+	font-weight: 500;
+	margin-left: 5px;
+
+	cursor: pointer;
+}

@@ -28,4 +28,8 @@
 			"lefty righty"
 			"main main";
 	}
+
+	.Left > div {
+		width: 100%;
+	}
 }

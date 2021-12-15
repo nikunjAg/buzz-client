@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./App.css";
+import "./globals.module.css";
 import Home from "./components/Home/Home";
 import Layout from "./components/Layout/Layout";
 

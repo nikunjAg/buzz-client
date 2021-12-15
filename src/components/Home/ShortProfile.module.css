@@ -1,6 +1,6 @@
-.short {
+.shortProfile {
 	width: 85%;
-	border-radius: 1px;
+	border-radius: 6px;
 }
 
 .profileBackground {
@@ -20,7 +20,7 @@
 	background-color: #fff;
 }
 
-.avatar > img {
+.shortProfile .avatar > img {
 	width: calc(100%);
 	height: calc(100%);
 	object-fit: contain;

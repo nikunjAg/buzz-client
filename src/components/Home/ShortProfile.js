@@ -1,13 +1,13 @@
 import React from "react";
 
-import Card from "../UI/Card/Card";
 import classes from "./ShortProfile.module.css";
+import Card from "../UI/Card/Card";
 import userImage from "../../assets/profile.jpg";
 import Avatar from "../UI/Avatar/Avatar";
 
 const ProfileCard = () => {
 	return (
-		<Card className={classes.short}>
+		<Card className={classes.shortProfile}>
 			<div
 				className={classes.profileBackground}
 				style={{

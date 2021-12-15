@@ -5,7 +5,7 @@ import Header from "./Header/Header";
 
 const Layout = (props) => {
 	return (
-		<div className={classes.Layout}>
+		<div className={classes.layout}>
 			<Header />
 			<main>{props.children}</main>
 		</div>

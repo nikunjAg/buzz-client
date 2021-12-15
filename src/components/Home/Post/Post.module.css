@@ -1,37 +1,38 @@
-.Post {
+.post {
 	padding: 10px;
+	margin-bottom: 1rem;
 
 	background-color: #fff;
 }
 
-.Header {
+.header {
 	display: flex;
 	align-items: center;
 }
 
-.Avatar {
+.avatar {
 	width: 30px;
 	height: 30px;
 }
 
-.Author {
+.author {
 	flex: 1;
 	margin-left: 5px;
 }
 
-.Author > h4 {
+.author > h4 {
 	font-size: 0.75rem;
 	font-weight: 500;
 
 	margin-bottom: 3px;
 }
 
-.Author > p {
+.author > p {
 	font-size: 0.75rem;
 	color: #555;
 }
 
-.More {
+.more {
 	width: 30px;
 	height: 30px;
 
@@ -40,11 +41,11 @@
 	cursor: pointer;
 }
 
-.More:hover {
+.more:hover {
 	background-color: #ddd;
 }
 
-.Content {
+.content {
 	margin: 15px 5px 5px 5px;
 	font-size: 0.85rem;
 	color: #333;

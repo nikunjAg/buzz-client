@@ -1,10 +1,10 @@
-.SortController {
+.sortController {
 	margin: 10px 0px;
 	font-size: 0.85rem;
 	color: #555;
 }
 
-.SortSelect {
+.sortSelect {
 	background: transparent;
 	border: none;
 	outline: none;

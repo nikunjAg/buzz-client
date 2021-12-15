@@ -2,27 +2,24 @@ import React from "react";
 
 import classes from "./Search.module.css";
 import Card from "../UI/Card/Card";
+import Avatar from "../UI/Avatar/Avatar";
 import profileImage from "../../assets/profile.jpg";
 
 const Search = (props) => {
 	return (
-		<Card className={classes.Search}>
-			<div
-				className={classes.Avatar}
-				style={{
-					backgroundImage: `url(${profileImage})`,
-					backgroundPosition: "center",
-					backgroundSize: "cover",
-					backgroundRepeat: "no-repeat",
-				}}
-			></div>
+		<Card className={classes.search}>
+			<Avatar
+				className={classes.avatar}
+				src={profileImage}
+				alt="Profile Image"
+			/>
 			<input
 				type="text"
 				name="search"
-				className={classes.SearchBar}
+				className={classes.searchBar}
 				placeholder="Start a post..."
 			/>
-			<div className={classes.ImagePicker}>
+			<div className={classes.imagePicker}>
 				<label htmlFor="image-picker">
 					<span className="material-icons-outlined">
 						photo_camera

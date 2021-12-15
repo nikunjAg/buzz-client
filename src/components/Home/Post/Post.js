@@ -8,22 +8,22 @@ import Card from "../../UI/Card/Card";
 
 const Post = (props) => {
 	return (
-		<Card className={classes.Post}>
-			<div className={classes.Header}>
+		<Card className={classes.post}>
+			<div className={classes.header}>
 				<Avatar
-					className={classes.Avatar}
+					className={classes.avatar}
 					src={profileImage}
 					alt="Post Author"
 				/>
-				<div className={classes.Author}>
+				<div className={classes.author}>
 					<h4>Nikunj Aggarwal</h4>
 					<p>{formatDate()}</p>
 				</div>
-				<div className={classes.More}>
+				<div className={classes.more}>
 					<span className="material-icons-outlined">more_horiz</span>
 				</div>
 			</div>
-			<div className={classes.Content}>
+			<div className={classes.content}>
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 				Excepturi consectetur quaerat neque impedit animi.
 			</div>

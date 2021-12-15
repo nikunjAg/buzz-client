@@ -1,4 +1,4 @@
-.Search {
+.search {
 	padding: 0.7rem;
 	display: flex;
 	align-items: center;
@@ -7,7 +7,7 @@
 	background-color: #fff;
 }
 
-.Avatar {
+.avatar {
 	height: 32px;
 	width: 32px;
 	margin-right: 3px;
@@ -16,7 +16,7 @@
 	border: 1px solid #eee;
 }
 
-.SearchBar {
+.searchBar {
 	outline: none;
 	border-image: none;
 
@@ -30,11 +30,11 @@
 	padding: 8px 14px;
 }
 
-.ImagePicker {
+.imagePicker {
 	margin-left: auto;
 }
 
-.ImagePicker > label {
+.imagePicker > label {
 	padding: 5px 10px;
 	font-size: 0.8rem;
 	color: #555;
@@ -50,16 +50,16 @@
 	transition: 0.1s ease-in;
 }
 
-.ImagePicker > label > span {
+.imagePicker > label > span {
 	color: #309730;
 	font-size: 1.2rem;
 	margin-right: 3px;
 }
 
-.ImagePicker > label:hover {
+.imagePicker > label:hover {
 	background-color: #ddd;
 }
 
-.ImagePicker > input {
+.imagePicker > input {
 	display: none;
 }

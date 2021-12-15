@@ -5,18 +5,18 @@ import profileIcon from "../../../assets/profile.jpg";
 
 const Header = () => {
 	return (
-		<header className={classes.Header}>
-			<div className={classes.Logo}>
+		<header className={classes.header}>
+			<div className={classes.logo}>
 				<a href="/">Logo</a>
 			</div>
-			<div className={classes.Links}>
-				<div className={classes.User}>
-					<div className={classes.Avatar}>
+			<div className={classes.links}>
+				<div className={classes.user}>
+					<div className={classes.avatar}>
 						<img src={profileIcon} alt="Avatar" />
 					</div>
-					<div className={classes.UserName}>Nikunj Aggarwal</div>
+					<div className={classes.userName}>Nikunj Aggarwal</div>
 				</div>
-				<div className={classes.Icon}>
+				<div className={classes.icon}>
 					<span className="material-icons">notifications</span>
 				</div>
 			</div>

@@ -1,25 +1,26 @@
-.ProfileCard {
+.short {
 	width: 85%;
+	border-radius: 1px;
 }
 
-.ProfileBackground {
+.profileBackground {
 	height: 4rem;
 	border-radius: 6px;
 }
 
-.ProfileImage {
-	height: 4.5rem;
-	width: 4.5rem;
+.avatar {
+	height: 3.3rem;
+	width: 3.3rem;
+	border-radius: 50%;
+
 	margin: 0 auto 1rem auto;
 	margin-top: -2rem;
-
 	padding: 3px;
-	border-radius: 50%;
 
 	background-color: #fff;
 }
 
-.ProfileImage > img {
+.avatar > img {
 	width: calc(100%);
 	height: calc(100%);
 	object-fit: contain;
@@ -27,11 +28,11 @@
 	border-radius: 50%;
 }
 
-.ProfileData {
+.profileData {
 	text-align: center;
 }
 
-.ProfileData > h3 {
+.profileData > h3 {
 	font-size: 0.95rem;
 	margin-bottom: 5px;
 	font-weight: 500;
@@ -39,14 +40,14 @@
 	color: #222;
 }
 
-.ProfileData > p {
+.profileData > p {
 	font-size: 0.85rem;
 	font-weight: 400;
 
 	color: #555;
 }
 
-.PostsCount {
+.postsCount {
 	margin: 0.8rem 0;
 	display: flex;
 	flex-direction: column;
@@ -55,14 +56,35 @@
 }
 
 /* Order Matters */
-.PostsCount > span {
+.postsCount > span {
 	color: #666;
 	font-size: 0.8rem;
 }
 
-.PostsCount > .Count {
+.postsCount > .count {
 	font-weight: 500;
 	font-size: 0.95rem;
 
 	color: #333;
+}
+
+@media (min-width: 576px) {
+	.avatar {
+		width: 3.6rem;
+		height: 3.6rem;
+	}
+}
+
+@media (min-width: 728px) {
+	.avatar {
+		width: 4rem;
+		height: 4rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.avatar {
+		width: 4.5rem;
+		height: 4.5rem;
+	}
 }

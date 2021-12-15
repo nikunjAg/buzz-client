@@ -5,16 +5,18 @@ import classes from "./Feed.module.css";
 
 const Feed = (props) => {
 	return (
-		<div className={classes.Feed}>
-			<div className={classes.SortController}>
+		<div className={classes.feed}>
+			<div className={classes.sortController}>
 				<span>Sort By:</span>
-				<select className={classes.SortSelect} value="top">
+				<select className={classes.sortSelect} value="top">
 					<option value="top">Top</option>
 					<option value="bop">Bop</option>
 				</select>
 			</div>
 
-			<div className={classes.Posts}>
+			<div className={classes.posts}>
+				<Post />
+				<Post />
 				<Post />
 			</div>
 		</div>

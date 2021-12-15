@@ -1,4 +1,4 @@
-.Header {
+.header {
 	height: 4rem;
 	padding: 0.5rem 1rem;
 
@@ -9,12 +9,12 @@
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.26);
 }
 
-.Logo {
+.logo {
 	height: 100%;
 	width: 6rem;
 }
 
-.Logo > a {
+.logo > a {
 	display: inline-block;
 	width: 100%;
 	height: 100%;
@@ -25,14 +25,14 @@
 	text-indent: -9999px;
 }
 
-.Links {
+.links {
 	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 }
 
-.User {
+.user {
 	margin-right: 1rem;
 	padding: 8px;
 	border-radius: 4px;
@@ -44,11 +44,11 @@
 	cursor: pointer;
 }
 
-.User:hover {
+.user:hover {
 	background-color: #eee;
 }
 
-.Avatar {
+.avatar {
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
@@ -58,18 +58,18 @@
 	overflow: hidden;
 }
 
-.Avatar > img {
+.avatar > img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
 }
 
-.UserName {
+.userName {
 	font-size: 0.9rem;
 	color: #444;
 }
 
-.Icon {
+.icon {
 	background-color: #eee;
 	width: 35px;
 	height: 35px;
@@ -83,11 +83,11 @@
 	cursor: pointer;
 }
 
-.Icon:not(:last-of-type) {
+.icon:not(:last-of-type) {
 	margin-right: 1rem;
 }
 
-.Icon > span {
+.icon > span {
 	width: 100%;
 	height: 100%;
 	/* font-size: 100%; */
@@ -96,10 +96,10 @@
 	transition: 0.1s ease-in;
 }
 
-.Icon:hover {
+.icon:hover {
 	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.26);
 }
 
-.Icon:hover > span {
+.icon:hover > span {
 	color: #000;
 }

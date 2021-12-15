@@ -1,4 +1,4 @@
-.Home {
+.home {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-template-areas: "lefty main righty";
@@ -6,30 +6,53 @@
 	background-color: #eee;
 }
 
-.Left {
+.left {
 	padding: 1rem;
 	grid-area: lefty;
 }
 
-.Main {
+.main {
 	padding: 1rem;
 	grid-area: main;
 }
 
-.Right {
+.right {
 	padding: 1rem;
 	grid-area: righty;
 }
 
 @media (max-width: 850px) {
-	.Home {
+	.home {
 		grid-template-columns: 1fr 2fr;
 		grid-template-areas:
 			"lefty righty"
 			"main main";
 	}
 
-	.Left > div {
+	/* .Left > div {
+		width: 100%;
+	} */
+
+	.main {
+		width: 80%;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width: 720px) {
+	.main {
+		width: 90%;
+	}
+}
+
+@media (max-width: 600px) {
+	.main {
+		width: 95%;
+	}
+}
+
+@media (max-width: 500px) {
+	.main {
 		width: 100%;
 	}
 }

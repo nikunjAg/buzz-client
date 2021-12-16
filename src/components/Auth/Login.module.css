@@ -1,0 +1,81 @@
+.login {
+	width: 100vw;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #fff;
+}
+
+.logo {
+	width: 130px;
+	height: 67px;
+
+	background: url(../../assets/TTN-logo.svg) no-repeat;
+	background-position: -199px;
+	text-indent: -9999px;
+
+	margin: 1rem 0rem;
+}
+
+.heading {
+	font-size: 2rem;
+	text-align: center;
+	font-weight: 300;
+
+	margin: 2rem 0rem;
+}
+
+.message {
+	color: #666;
+	font-size: 0.9rem;
+	text-align: center;
+
+	margin-bottom: 1rem;
+
+	font-weight: 300;
+}
+
+.loginBtn {
+	outline: none;
+	border-image: none;
+	cursor: pointer;
+
+	margin-top: 3rem;
+	padding: 10px 36px;
+	border-radius: 18px;
+	border: 1px solid palevioletred;
+
+	font-size: 1rem;
+	color: palevioletred;
+	background-color: transparent;
+
+	transition: 0.15s ease-in;
+}
+
+.loginBtn:hover,
+.loginBtn:active {
+	background-color: palevioletred;
+	color: #fff;
+}
+
+.loginSuccess,
+.loginError {
+	padding: 1rem;
+	font-size: 1rem;
+	font-weight: 500;
+	text-align: center;
+}
+
+.loginSuccess > span,
+.loginError > span {
+	display: block;
+
+	font-size: 0.9rem;
+	font-weight: 400;
+	margin-top: 5px;
+	color: #777;
+}

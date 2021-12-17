@@ -2,21 +2,9 @@ import React from "react";
 
 import classes from "./Login.module.css";
 import { BASE_URL } from "../../axios";
-import axios from "../../axios";
 
 const Login = (props) => {
-	const fetchUser = async () => {
-		try {
-			const { data } = await axios.get("/auth/user", {
-				withCredentials: true,
-			});
-			console.log("You are successfully Authenticated.");
-			console.log(data);
-		} catch (err) {
-			console.log(err);
-			console.log("No, you are not authenticated.");
-		}
-	};
+	console.log("LOGIN Component mounted");
 
 	const googleSSOHandler = async () => {
 		const GOOGLE_LOGIN_URL = `${BASE_URL}/auth/google`;
@@ -32,7 +20,7 @@ const Login = (props) => {
 				if (googleSSOWindow.closed) {
 					clearInterval(timer);
 
-					fetchUser();
+					props.onFetchUser();
 				}
 			}, 300);
 		}

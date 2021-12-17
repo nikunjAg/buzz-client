@@ -8,13 +8,14 @@ import "./globals.module.css";
 import Login from "./components/Auth/Login";
 import LoginSuccess from "./components/Auth/LoginSuccess";
 import LoginError from "./components/Auth/LoginError";
+import Layout from "./components/Layout/Layout";
+import Home from "./components/Home/Home";
+
 import { autoLoginUser } from "./store/actions/auth.action";
 
 function App() {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const dispatch = useDispatch();
-
-	console.log(`APP COMPONENT RENDERED ${isAuthenticated}`);
 
 	const tryAutoLoginUser = useCallback(() => {
 		dispatch(autoLoginUser());
@@ -24,7 +25,7 @@ function App() {
 		tryAutoLoginUser();
 	}, [tryAutoLoginUser]);
 
-	return (
+	let routes = (
 		<Switch>
 			<Route path="/login/success">
 				<LoginSuccess />
@@ -38,6 +39,18 @@ function App() {
 			<Redirect to="/login" />
 		</Switch>
 	);
+
+	if (isAuthenticated) {
+		routes = (
+			<Layout>
+				<Switch>
+					<Home />
+				</Switch>
+			</Layout>
+		);
+	}
+
+	return routes;
 }
 
 export default App;

@@ -34,7 +34,7 @@ export const autoLoginUser = () => {
 			} = await axios.get("/users/me", {
 				withCredentials: true,
 			});
-			console.log("You are successfully Authenticated.");
+
 			dispatch(userLoginSuccess(user));
 		} catch (err) {
 			console.log(err);

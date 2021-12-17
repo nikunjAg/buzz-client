@@ -4,8 +4,6 @@ import classes from "./Login.module.css";
 import { BASE_URL } from "../../axios";
 
 const Login = (props) => {
-	console.log("LOGIN Component mounted");
-
 	const googleSSOHandler = async () => {
 		const GOOGLE_LOGIN_URL = `${BASE_URL}/auth/google`;
 

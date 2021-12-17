@@ -10,6 +10,7 @@ import LoginSuccess from "./components/Auth/LoginSuccess";
 import LoginError from "./components/Auth/LoginError";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
+import Notifications from "./components/Notifications/Notifications";
 
 import { autoLoginUser } from "./store/actions/auth.action";
 
@@ -46,6 +47,9 @@ function App() {
 				<Switch>
 					<Route path="/login/success">
 						<LoginSuccess />
+					</Route>
+					<Route path="/notifications">
+						<Notifications />
 					</Route>
 					<Route path="/feed">
 						<Home />

@@ -20,7 +20,7 @@ const Login = (props) => {
 				if (googleSSOWindow.closed) {
 					clearInterval(timer);
 
-					props.onFetchUser();
+					props.onLoginUser();
 				}
 			}, 300);
 		}
@@ -47,4 +47,4 @@ const Login = (props) => {
 	);
 };
 
-export default Login;
+export default React.memo(Login);

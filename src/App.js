@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./App.css";
 import "./globals.module.css";
@@ -7,25 +8,21 @@ import "./globals.module.css";
 import Login from "./components/Auth/Login";
 import LoginSuccess from "./components/Auth/LoginSuccess";
 import LoginError from "./components/Auth/LoginError";
-import axios from "./axios";
+import { autoLoginUser } from "./store/actions/auth.action";
 
 function App() {
-	const fetchUserHandler = async () => {
-		try {
-			const { data } = await axios.get("/users/me", {
-				withCredentials: true,
-			});
-			console.log("You are successfully Authenticated.");
-			console.log(data);
-		} catch (err) {
-			console.log(err.request);
-			console.log("No, you are not authenticated.");
-		}
-	};
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	const dispatch = useDispatch();
+
+	console.log(`APP COMPONENT RENDERED ${isAuthenticated}`);
+
+	const tryAutoLoginUser = useCallback(() => {
+		dispatch(autoLoginUser());
+	}, [dispatch]);
 
 	useEffect(() => {
-		fetchUserHandler();
-	}, []);
+		tryAutoLoginUser();
+	}, [tryAutoLoginUser]);
 
 	return (
 		<Switch>
@@ -36,7 +33,7 @@ function App() {
 				<LoginError />
 			</Route>
 			<Route path="/login">
-				<Login onFetchUser={fetchUserHandler} />
+				<Login onLoginUser={tryAutoLoginUser} />
 			</Route>
 			<Redirect to="/login" />
 		</Switch>

@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import classes from "./Header.module.css";
-import profileIcon from "../../../assets/profile.jpg";
+import Avatar from "../../UI/Avatar/Avatar";
 
 const Header = () => {
+	const { name, profileImage } = useSelector((state) => state.user);
+
 	return (
 		<header className={classes.header}>
 			<div className={classes.logo}>
@@ -11,10 +14,12 @@ const Header = () => {
 			</div>
 			<div className={classes.links}>
 				<div className={classes.user}>
-					<div className={classes.avatar}>
-						<img src={profileIcon} alt="Avatar" />
-					</div>
-					<div className={classes.userName}>Nikunj Aggarwal</div>
+					<Avatar
+						className={classes.avatar}
+						src={profileImage}
+						alt="Avatar"
+					/>
+					<div className={classes.userName}>{name}</div>
 				</div>
 				<div className={classes.icon}>
 					<span className="material-icons">notifications</span>

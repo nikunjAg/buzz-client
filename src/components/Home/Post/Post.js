@@ -5,6 +5,7 @@ import classes from "./Post.module.css";
 import profileImage from "../../../assets/profile.jpg";
 import formatDate from "../../../util/DateFormat";
 import Card from "../../UI/Card/Card";
+import PostInteraction from "./PostInteractions/PostInteraction";
 
 const Post = (props) => {
 	return (
@@ -27,6 +28,8 @@ const Post = (props) => {
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 				Excepturi consectetur quaerat neque impedit animi.
 			</div>
+
+			<PostInteraction />
 		</Card>
 	);
 };

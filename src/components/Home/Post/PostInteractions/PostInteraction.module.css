@@ -1,0 +1,28 @@
+.postActivity {
+	width: 100%;
+}
+
+.actions {
+	padding: 8px 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	border-bottom: 1px solid #ccc;
+}
+
+.action {
+	color: #777;
+	font-size: 0.9rem;
+
+	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+}
+
+.action > span {
+	font-size: 0.85rem;
+	margin-right: 5px;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import classes from "./AddComment.module.css";
-import Avatar from "../../UI/Avatar/Avatar";
+import Avatar from "../../../UI/Avatar/Avatar";
 
 const AddComment = () => {
 	const profileImage = useSelector((state) => state.user.profileImage);

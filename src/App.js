@@ -18,7 +18,7 @@ function App() {
 			console.log("You are successfully Authenticated.");
 			console.log(data);
 		} catch (err) {
-			console.log(err);
+			console.log(err.request);
 			console.log("No, you are not authenticated.");
 		}
 	};

@@ -3,7 +3,7 @@
 }
 
 .actions {
-	padding: 8px 0;
+	padding: 4px 0;
 
 	display: flex;
 	align-items: center;
@@ -14,12 +14,18 @@
 
 .action {
 	color: #777;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
+	padding: 4px 8px;
 
 	cursor: pointer;
+	border-radius: 4px;
 
 	display: flex;
 	align-items: center;
+}
+
+.action:hover {
+	background-color: #eee;
 }
 
 .action > span {

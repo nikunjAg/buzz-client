@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import classes from "./AddComment.module.css";
 import Avatar from "../../../UI/Avatar/Avatar";
 
-const AddComment = () => {
+const AddComment = React.forwardRef((props, ref) => {
 	const profileImage = useSelector((state) => state.user.profileImage);
 
 	return (
@@ -18,9 +18,10 @@ const AddComment = () => {
 				placeholder="Write a comment..."
 				name="comment"
 				className={classes.commentInput}
+				ref={ref}
 			/>
 		</div>
 	);
-};
+});
 
 export default AddComment;

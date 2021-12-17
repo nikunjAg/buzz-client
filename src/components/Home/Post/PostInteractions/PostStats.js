@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./PostStats.module.css";
 
-const PostStats = (props) => {
+const PostStats = ({ likes = 0, dislikes = 0, comments = 0 }) => {
 	return (
 		<div className={classes.activities}>
 			<div className={classes.leftActivities}>
@@ -10,19 +10,23 @@ const PostStats = (props) => {
 					<span className={classes.activityIcon}>
 						<span className="material-icons">thumb_up</span>
 					</span>
-					<span className={classes.activityFrequency}>13</span>
+					<span className={classes.activityFrequency}>{likes}</span>
 				</div>
 
 				<div className={`${classes.dislikes} ${classes.activity}`}>
 					<span className={classes.activityIcon}>
 						<span className="material-icons">thumb_down</span>
 					</span>
-					<span className={classes.activityFrequency}>2</span>
+					<span className={classes.activityFrequency}>
+						{dislikes}
+					</span>
 				</div>
 			</div>
 			<div className={classes.rightActivities}>
 				<div className={`${classes.comments} ${classes.activity}`}>
-					<span className={classes.activityFrequency}>1</span>
+					<span className={classes.activityFrequency}>
+						{comments}
+					</span>
 					&nbsp;comment
 				</div>
 			</div>

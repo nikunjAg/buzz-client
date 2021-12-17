@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import classes from "./PostInteraction.module.css";
 import AddComment from "./AddComment";
 import PostStats from "./PostStats";
 
-const PostActivity = (props) => {
+const PostActivity = () => {
+	const commentInputRef = useRef();
+
+	const likeClickedHandler = () => {};
+	const dislikeClickedHandler = () => {};
+	const commentClickedHandler = () => {
+		commentInputRef.current.focus();
+	};
+
 	return (
 		<div className={classes.postActivity}>
 			<PostStats />
@@ -17,14 +25,14 @@ const PostActivity = (props) => {
 					<span className="material-icons-outlined">thumb_down</span>
 					<span>Disike</span>
 				</div>
-				<div className={classes.action}>
+				<div className={classes.action} onClick={commentClickedHandler}>
 					<span className="material-icons-outlined">
 						chat_bubble_outline
 					</span>
 					<span>Comment</span>
 				</div>
 			</div>
-			<AddComment />
+			<AddComment ref={commentInputRef} />
 		</div>
 	);
 };

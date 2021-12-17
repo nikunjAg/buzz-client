@@ -1,11 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import classes from "./Search.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
-import profileImage from "../../assets/profile.jpg";
 
 const Search = (props) => {
+	const profileImage = useSelector((state) => state.user.profileImage);
+
 	return (
 		<Card className={classes.search}>
 			<Avatar

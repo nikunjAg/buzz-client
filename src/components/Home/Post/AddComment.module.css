@@ -1,0 +1,25 @@
+.addComment {
+	padding: 10px 0px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.avatar {
+	width: 25px;
+	height: 25px;
+}
+
+.addComment .commentInput {
+	flex: 1;
+	outline: none;
+	border-image: none;
+
+	border: none;
+	border-radius: 12px;
+	padding: 6px 10px;
+
+	font-size: 0.85rem;
+	background-color: #ddd;
+}

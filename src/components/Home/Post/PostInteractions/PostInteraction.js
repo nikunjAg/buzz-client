@@ -8,7 +8,9 @@ const PostActivity = () => {
 	const commentInputRef = useRef();
 
 	const likeClickedHandler = () => {};
+
 	const dislikeClickedHandler = () => {};
+
 	const commentClickedHandler = () => {
 		commentInputRef.current.focus();
 	};
@@ -16,12 +18,12 @@ const PostActivity = () => {
 	return (
 		<div className={classes.postActivity}>
 			<PostStats />
-			<div className={classes.actions}>
+			<div className={classes.actions} onClick={likeClickedHandler}>
 				<div className={classes.action}>
 					<span className="material-icons-outlined">thumb_up</span>
 					<span>Like</span>
 				</div>
-				<div className={classes.action}>
+				<div className={classes.action} onClick={dislikeClickedHandler}>
 					<span className="material-icons-outlined">thumb_down</span>
 					<span>Disike</span>
 				</div>

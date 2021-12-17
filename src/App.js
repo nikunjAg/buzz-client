@@ -44,7 +44,13 @@ function App() {
 		routes = (
 			<Layout>
 				<Switch>
-					<Home />
+					<Route path="/login/success">
+						<LoginSuccess />
+					</Route>
+					<Route path="/feed">
+						<Home />
+					</Route>
+					<Redirect to="/feed" />
 				</Switch>
 			</Layout>
 		);

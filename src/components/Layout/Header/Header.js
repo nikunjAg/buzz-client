@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import classes from "./Header.module.css";
@@ -21,9 +22,9 @@ const Header = () => {
 					/>
 					<div className={classes.userName}>{name}</div>
 				</div>
-				<div className={classes.icon}>
+				<NavLink to="/notifications" className={classes.icon}>
 					<span className="material-icons">notifications</span>
-				</div>
+				</NavLink>
 			</div>
 		</header>
 	);

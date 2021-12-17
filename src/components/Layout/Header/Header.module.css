@@ -70,6 +70,8 @@
 }
 
 .icon {
+	text-decoration: none;
+
 	background-color: #eee;
 	width: 35px;
 	height: 35px;

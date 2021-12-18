@@ -1,15 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import classes from "./Search.module.css";
+import classes from "./WritePost.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
 
-const Search = (props) => {
+const WritePost = (props) => {
 	const profileImage = useSelector((state) => state.user.profileImage);
 
 	return (
-		<Card className={classes.search}>
+		<Card className={classes.writePost}>
 			<Avatar
 				className={classes.avatar}
 				src={profileImage}
@@ -18,7 +18,7 @@ const Search = (props) => {
 			<input
 				type="text"
 				name="search"
-				className={classes.searchBar}
+				className={classes.postCaption}
 				placeholder="Start a post..."
 			/>
 			<div className={classes.imagePicker}>
@@ -39,4 +39,4 @@ const Search = (props) => {
 	);
 };
 
-export default Search;
+export default WritePost;

@@ -1,4 +1,4 @@
-.search {
+.writePost {
 	padding: 0.7rem;
 	display: flex;
 	align-items: center;
@@ -16,7 +16,7 @@
 	border: 1px solid #eee;
 }
 
-.searchBar {
+.postCaption {
 	outline: none;
 	border-image: none;
 

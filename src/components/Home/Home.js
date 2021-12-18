@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Home.module.css";
 import ShortProfile from "./ShortProfile";
-import Search from "./Search";
+import WritePost from "./WritePost";
 import Friends from "./Friends";
 import Suggestions from "./Suggestions";
 import Feed from "./Feed/Feed";
@@ -14,7 +14,7 @@ const Home = (props) => {
 				<ShortProfile />
 			</div>
 			<div className={classes.main}>
-				<Search />
+				<WritePost />
 				<Feed />
 			</div>
 			<div className={classes.right}>

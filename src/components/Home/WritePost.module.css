@@ -1,3 +1,5 @@
+@import url(../../);
+
 .writePost {
 	padding: 0.7rem;
 	display: flex;
@@ -16,6 +18,13 @@
 	border: 1px solid #eee;
 }
 
+.postForm {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
 .postCaption {
 	outline: none;
 	border-image: none;
@@ -24,7 +33,7 @@
 
 	border: none;
 	border-radius: 16px;
-	margin: 0 12px 0 8px;
+	margin-left: 8px;
 
 	background: #eee;
 	color: #333;
@@ -63,4 +72,82 @@
 
 .imagePicker > input {
 	display: none;
+}
+
+.submitPost {
+	outline: none;
+	border-image: none;
+
+	cursor: pointer;
+
+	margin: 0 10px;
+
+	background-color: #ddd;
+	padding: 7px;
+	border: none;
+	border-radius: 50%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.submitPost:hover {
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
+}
+
+.submitPost > span {
+	font-size: 1rem;
+	color: #444;
+}
+
+.submitPost:hover > span {
+	color: #222;
+}
+
+.previewImages {
+	margin: 10px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	gap: 10px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.previewImages > .preview {
+	height: 100px;
+	width: 100%;
+
+	text-align: center;
+
+	background-color: #eee;
+	padding: 5px;
+
+	position: relative;
+
+	grid-column-start: auto;
+}
+
+.preview > img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.preview > span {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+
+	color: #bbb;
+
+	font-size: 16px;
+	font-weight: 500;
+
+	cursor: pointer;
+}
+
+.preview > span:hover {
+	color: #777;
 }

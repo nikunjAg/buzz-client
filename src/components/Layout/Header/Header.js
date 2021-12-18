@@ -8,10 +8,23 @@ import Avatar from "../../UI/Avatar/Avatar";
 const Header = () => {
 	const { name, profileImage } = useSelector((state) => state.user);
 
+	const unreadNotificationsCount = useSelector(
+		(state) => state.notifications.unreadNotifications.length
+	);
+
+	let newNotifications;
+	if (unreadNotificationsCount > 0) {
+		newNotifications = (
+			<span className={classes.newNotifications}>
+				{unreadNotificationsCount}
+			</span>
+		);
+	}
+
 	return (
 		<header className={classes.header}>
 			<div className={classes.logo}>
-				<a href="/">Logo</a>
+				<NavLink to="/">Logo</NavLink>
 			</div>
 			<div className={classes.links}>
 				<div className={classes.user}>
@@ -23,7 +36,12 @@ const Header = () => {
 					<div className={classes.userName}>{name}</div>
 				</div>
 				<NavLink to="/notifications" className={classes.icon}>
-					<span className="material-icons">notifications</span>
+					<span
+						className={`material-icons ${classes["material-icons"]}`}
+					>
+						notifications
+					</span>
+					{newNotifications}
 				</NavLink>
 			</div>
 		</header>

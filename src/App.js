@@ -13,7 +13,7 @@ import Home from "./components/Home/Home";
 import Notifications from "./components/Notifications/Notifications";
 
 import { autoLoginUser } from "./store/actions/auth.action";
-import axios from "./axios";
+import { fetchUnreadNotifications } from "./store/actions/notifications.action";
 
 function App() {
 	const { isAuthenticated, loading, error } = useSelector(
@@ -30,21 +30,11 @@ function App() {
 	}, [tryAutoLoginUser]);
 
 	useEffect(() => {
-		const fetchUnreadNotifications = async () => {
-			const { data } = await axios.get("/notifications?type=unread", {
-				withCredentials: true,
-			});
-
-			console.log(data);
-		};
-
 		if (isAuthenticated) {
 			// We need to fetch unread notifications
-			fetchUnreadNotifications().catch((err) => {
-				console.log(err);
-			});
+			dispatch(fetchUnreadNotifications());
 		}
-	}, [isAuthenticated]);
+	}, [isAuthenticated, dispatch]);
 
 	// Seperating the routes for authenticated and unauthenticated users
 	let routes = (

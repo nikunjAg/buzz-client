@@ -8,7 +8,7 @@ import {
 } from "../actions/notifications.action";
 
 const initialState = {
-	unreadNotifications: 0,
+	unreadNotifications: [],
 	invitations: [],
 	loading: false,
 	error: null,

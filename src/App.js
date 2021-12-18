@@ -16,7 +16,9 @@ import { autoLoginUser } from "./store/actions/auth.action";
 import axios from "./axios";
 
 function App() {
-	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+	const { isAuthenticated, loading, error } = useSelector(
+		(state) => state.auth
+	);
 	const dispatch = useDispatch();
 
 	const tryAutoLoginUser = useCallback(() => {
@@ -29,11 +31,11 @@ function App() {
 
 	useEffect(() => {
 		const fetchUnreadNotifications = async () => {
-			const {
-				data: { count },
-			} = await axios.get("/notifications?type=unread");
+			const { data } = await axios.get("/notifications?type=unread", {
+				withCredentials: true,
+			});
 
-			console.log(count);
+			console.log(data);
 		};
 
 		if (isAuthenticated) {
@@ -44,6 +46,7 @@ function App() {
 		}
 	}, [isAuthenticated]);
 
+	// Seperating the routes for authenticated and unauthenticated users
 	let routes = (
 		<Switch>
 			<Route path="/login/success">
@@ -53,7 +56,11 @@ function App() {
 				<LoginError />
 			</Route>
 			<Route path="/">
-				<Login onLoginUser={tryAutoLoginUser} />
+				<Login
+					onLoginUser={tryAutoLoginUser}
+					loading={loading}
+					error={error}
+				/>
 			</Route>
 		</Switch>
 	);

@@ -7,8 +7,8 @@ export const FETCH_FEED_FAILED = "FETCH_FEED_FAILED";
 const fetchFeedStarted = () => {
 	return { type: FETCH_FEED_STARTED };
 };
-const fetchFeedSuccess = () => {
-	return { type: FETCH_FEED_SUCCESS };
+const fetchFeedSuccess = (posts) => {
+	return { type: FETCH_FEED_SUCCESS, posts };
 };
 const fetchFeedFailed = (errMessage) => {
 	return { type: FETCH_FEED_FAILED, error_message: errMessage };

@@ -37,7 +37,7 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 				error: null,
-				invitations: 0,
+				invitations: [],
 			};
 		case FETCH_NOTIFICATIONS_SUCCESS:
 			return {

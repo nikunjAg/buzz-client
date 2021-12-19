@@ -81,7 +81,7 @@ export const fetchNotifications = () => {
 			} = await axios.get("/notifications", {
 				withCredentials: true,
 			});
-
+			console.log(notifications);
 			dispatch(fetchNotificationsSuccess(notifications));
 		} catch (err) {
 			if (err.response) {

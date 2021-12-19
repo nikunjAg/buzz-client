@@ -1,15 +1,17 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./WritePost.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
+import { savePost } from "../../store/actions/post.action";
 
 const WritePost = (props) => {
 	const captionInputRef = useRef();
 	const [images, setImages] = useState([]);
 
 	const profileImage = useSelector((state) => state.user.profileImage);
+	const dispatch = useDispatch();
 
 	const deleteImageHandler = (index) => {
 		setImages((oldImages) => [
@@ -51,9 +53,12 @@ const WritePost = (props) => {
 			const encodedFiles = await Promise.all(filePathsPromises);
 			const caption = captionInputRef.current.value;
 
-			/* axios.post('/posts', { caption, images: encodedFiles }, {
-				withCredentials: true
-			}) */
+			const post = {
+				caption: caption,
+				images: encodedFiles,
+			};
+
+			dispatch(savePost(post));
 		} catch (err) {
 			console.log("Error in Uploading Image", err);
 		}

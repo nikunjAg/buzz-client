@@ -1,17 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./WritePost.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
+import Spinner from "../UI/Spinner/Spinner";
+import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 import { savePost } from "../../store/actions/post.action";
 
 const WritePost = (props) => {
 	const captionInputRef = useRef();
 	const [images, setImages] = useState([]);
+	const [showError, setShowError] = useState(false);
 
 	const profileImage = useSelector((state) => state.user.profileImage);
+	const { loading, error } = useSelector((state) => state.post);
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (error) {
+			setShowError(true);
+		}
+	}, [error]);
 
 	const deleteImageHandler = (index) => {
 		setImages((oldImages) => [
@@ -28,7 +38,7 @@ const WritePost = (props) => {
 	const getBase64EncodedImage = (file) => {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
-			reader.readAsDataURL(images[0]);
+			reader.readAsDataURL(file);
 
 			reader.onloadend = () => {
 				resolve(reader.result);
@@ -36,6 +46,11 @@ const WritePost = (props) => {
 
 			reader.onerror = () => reject("Something went Wrong!");
 		});
+	};
+
+	const clearFormHandler = () => {
+		captionInputRef.current.value = "";
+		setImages([]);
 	};
 
 	const submitPostHandler = async (event) => {
@@ -59,9 +74,14 @@ const WritePost = (props) => {
 			};
 
 			dispatch(savePost(post));
+			clearFormHandler();
 		} catch (err) {
 			console.log("Error in Uploading Image", err);
 		}
+	};
+
+	const errorClearHandler = () => {
+		setShowError(false);
 	};
 
 	let imagesPreview;
@@ -84,7 +104,11 @@ const WritePost = (props) => {
 	}
 
 	return (
-		<Card>
+		<Card className={classes.card}>
+			{loading && <Spinner />}
+			{error && showError && (
+				<ErrorMessage message={error} onTimeout={errorClearHandler} />
+			)}
 			<div className={classes.writePost}>
 				<Avatar
 					className={classes.avatar}

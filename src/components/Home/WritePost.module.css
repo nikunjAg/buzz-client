@@ -1,4 +1,6 @@
-@import url(../../);
+.card {
+	position: relative;
+}
 
 .writePost {
 	padding: 0.7rem;

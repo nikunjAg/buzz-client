@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 
 import classes from "./ErrorMessage.module.css";
 
@@ -15,13 +16,18 @@ const ErrorMessage = (props) => {
 		};
 	}, [timeout, onTimeout]);
 
-	return (
+	const errorMessageEl = (
 		<div className={classes.errorMessage}>
 			<p className={classes.message}>
 				<span class="material-icons-outlined">error</span>
 				{message || "Something went wrong! Try again later"}
 			</p>
 		</div>
+	);
+
+	ReactDOM.createPortal(
+		errorMessageEl,
+		document.getElementById("messages-root")
 	);
 };
 

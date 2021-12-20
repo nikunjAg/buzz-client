@@ -16,12 +16,11 @@ const fetchUnreadNotificationsSuccess = (notifications) => {
 	return { type: FETCH_UNREAD_NOTIFICATIONS_SUCCESS, notifications };
 };
 
-/* const fetchUnreadNotificationsFailed = (errMessage) => {
+const fetchUnreadNotificationsFailed = () => {
 	return {
 		type: FETCH_UNREAD_NOTIFICATIONS_FAILED,
-		error_message: errMessage,
 	};
-}; */
+};
 
 export const fetchUnreadNotifications = () => {
 	return async (dispatch) => {
@@ -35,6 +34,7 @@ export const fetchUnreadNotifications = () => {
 
 			dispatch(fetchUnreadNotificationsSuccess(notifications));
 		} catch (err) {
+			dispatch(fetchUnreadNotificationsFailed());
 			dispatch(errorHandler(err));
 		}
 	};
@@ -52,12 +52,11 @@ const fetchNotificationsSuccess = (notifications) => {
 	return { type: FETCH_NOTIFICATIONS_SUCCESS, notifications };
 };
 
-/* const fetchNotificationsFailed = (errMessage) => {
+const fetchNotificationsFailed = () => {
 	return {
 		type: FETCH_NOTIFICATIONS_FAILED,
-		error_message: errMessage,
 	};
-}; */
+};
 
 export const fetchNotifications = () => {
 	return async (dispatch) => {
@@ -71,6 +70,7 @@ export const fetchNotifications = () => {
 			console.log(notifications);
 			dispatch(fetchNotificationsSuccess(notifications));
 		} catch (err) {
+			dispatch(fetchNotificationsFailed());
 			dispatch(errorHandler(err));
 		}
 	};

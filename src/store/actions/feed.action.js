@@ -13,9 +13,9 @@ const fetchFeedSuccess = (posts) => {
 	return { type: FETCH_FEED_SUCCESS, posts };
 };
 
-/* const fetchFeedFailed = (errMessage) => {
-	return { type: FETCH_FEED_FAILED, error_message: errMessage };
-}; */
+const fetchFeedFailed = () => {
+	return { type: FETCH_FEED_FAILED };
+};
 
 export const fetchFeed = () => {
 	return async (dispatch) => {
@@ -26,6 +26,7 @@ export const fetchFeed = () => {
 			} = await axios.get("/posts", { withCredentials: true });
 			dispatch(fetchFeedSuccess(posts));
 		} catch (error) {
+			dispatch(fetchFeedFailed());
 			dispatch(errorHandler(error));
 		}
 	};

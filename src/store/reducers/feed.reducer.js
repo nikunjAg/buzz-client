@@ -7,17 +7,16 @@ import {
 const initialState = {
 	posts: [],
 	loading: false,
-	error: null,
 };
 
 const feedReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_FEED_STARTED:
-			return { ...state, loading: true, error: null };
+			return { ...state, loading: true };
 		case FETCH_FEED_SUCCESS:
 			return { ...state, loading: false, posts: action.posts };
 		case FETCH_FEED_FAILED:
-			return { ...state, loading: false, error: action.error_message };
+			return { ...state, loading: false };
 		default:
 			return state;
 	}

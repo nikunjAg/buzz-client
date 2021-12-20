@@ -13,9 +13,9 @@ const savePostSuccess = (post) => {
 	return { type: SAVE_POST_SUCCESS, post };
 };
 
-/* const savePostFailed = (errMessage) => {
-	return { type: SAVE_POST_FAILED, error_message: errMessage };
-}; */
+const savePostFailed = () => {
+	return { type: SAVE_POST_FAILED };
+};
 
 export const savePost = (postData) => {
 	return async (dispatch) => {
@@ -33,6 +33,7 @@ export const savePost = (postData) => {
 			dispatch(savePostSuccess(data.post));
 			dispatch(addToast({ type: "success", error: data.message }));
 		} catch (err) {
+			dispatch(savePostFailed());
 			dispatch(errorHandler(err));
 		}
 	};

@@ -7,13 +7,12 @@ import {
 const initialState = {
 	isAuthenticated: false,
 	loading: false,
-	error: null,
 };
 
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case USER_LOGIN_STARTED:
-			return { isAuthenticated: false, loading: true, error: null };
+			return { isAuthenticated: false, loading: true };
 
 		case USER_LOGIN_SUCCESS:
 			return {
@@ -25,7 +24,6 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: false,
-				error: action.error_message,
 			};
 
 		default:

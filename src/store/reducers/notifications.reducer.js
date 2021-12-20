@@ -11,7 +11,6 @@ const initialState = {
 	unreadNotifications: [],
 	invitations: [],
 	loading: false,
-	error: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -20,7 +19,6 @@ const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: true,
-				error: null,
 				unreadNotifications: 0,
 			};
 		case FETCH_UNREAD_NOTIFICATIONS_SUCCESS:
@@ -30,13 +28,12 @@ const userReducer = (state = initialState, action) => {
 				unreadNotifications: action.notifications,
 			};
 		case FETCH_UNREAD_NOTIFICATIONS_FAILED:
-			return { ...state, loading: false, error: action.error_message };
+			return { ...state, loading: false };
 
 		case FETCH_NOTIFICATIONS_STARTED:
 			return {
 				...state,
 				loading: true,
-				error: null,
 				invitations: [],
 			};
 		case FETCH_NOTIFICATIONS_SUCCESS:
@@ -47,7 +44,7 @@ const userReducer = (state = initialState, action) => {
 				unreadNotifications: 0,
 			};
 		case FETCH_NOTIFICATIONS_FAILED:
-			return { ...state, loading: false, error: action.error_message };
+			return { ...state, loading: false };
 		default:
 			return state;
 	}

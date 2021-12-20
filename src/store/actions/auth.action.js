@@ -18,12 +18,11 @@ const userLoginSuccess = (user) => {
 	};
 };
 
-/* const userLoginFailed = (errMessage) => {
+const userLoginFailed = () => {
 	return {
 		type: USER_LOGIN_FAILED,
-		error_message: errMessage,
 	};
-}; */
+};
 
 export const autoLoginUser = () => {
 	return async (dispatch) => {
@@ -39,7 +38,7 @@ export const autoLoginUser = () => {
 			dispatch(userLoginSuccess(user));
 			dispatch(addToast({ type: "success", message }));
 		} catch (err) {
-			console.log(err);
+			dispatch(userLoginFailed());
 			dispatch(errorHandler(err));
 		}
 	};

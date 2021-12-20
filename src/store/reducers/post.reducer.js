@@ -6,18 +6,17 @@ import {
 
 const initialState = {
 	loading: false,
-	error: null,
 	currentPost: null,
 };
 
 const postReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SAVE_POST_STARTED:
-			return { ...state, loading: true, error: null, currentPost: null };
+			return { ...state, loading: true, currentPost: null };
 		case SAVE_POST_SUCCESS:
 			return { ...state, loading: false, currentPost: action.post };
 		case SAVE_POST_FAILED:
-			return { ...state, loading: false, error: action.error_message };
+			return { ...state, loading: false };
 		default:
 			return state;
 	}

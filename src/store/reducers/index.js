@@ -5,6 +5,7 @@ import userReducer from "./user.reducer";
 import notificationsReducer from "./notifications.reducer";
 import postReducer from "./post.reducer";
 import feedReducer from "./feed.reducer";
+import toastsReducer from "./toasts.reducer";
 
 const rootReducer = combineReducers({
 	auth: authReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 	notifications: notificationsReducer,
 	post: postReducer,
 	feed: feedReducer,
+	toasts: toastsReducer,
 });
 
 export default rootReducer;

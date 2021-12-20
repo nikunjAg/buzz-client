@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classes from "./Login.module.css";
 import { BASE_URL } from "../../axios";
 import Loading from "../UI/Loading/Loading";
-import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
+import ErrorMessage from "../UI/Messages/ErrorMessage";
 
 const Login = (props) => {
 	const [loginTried, setLoginTried] = useState(false);

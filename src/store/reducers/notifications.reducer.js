@@ -44,6 +44,7 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				loading: false,
 				invitations: action.notifications,
+				unreadNotifications: 0,
 			};
 		case FETCH_NOTIFICATIONS_FAILED:
 			return { ...state, loading: false, error: action.error_message };

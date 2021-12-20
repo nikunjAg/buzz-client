@@ -15,8 +15,10 @@ const Notifications = (props) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchNotifications());
-	}, [dispatch]);
+		if (invitations.length === 0) dispatch(fetchNotifications());
+	}, [dispatch, invitations.length]);
+
+	console.log(invitations);
 
 	const invitationEls = invitations.map((invitation) => {
 		const {

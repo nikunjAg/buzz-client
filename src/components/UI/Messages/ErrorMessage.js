@@ -19,7 +19,7 @@ const ErrorMessage = (props) => {
 	const errorMessageEl = (
 		<div className={classes.errorMessage}>
 			<p className={classes.message}>
-				<span class="material-icons-outlined">error</span>
+				<span className="material-icons-outlined">error</span>
 				{message || "Something went wrong! Try again later"}
 			</p>
 		</div>

@@ -11,8 +11,8 @@ const Feed = (props) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchFeed());
-	}, [dispatch]);
+		if (posts.length === 0) dispatch(fetchFeed());
+	}, [dispatch, posts.length]);
 
 	const postsEls = posts.map((post) => <Post key={post._id} {...post} />);
 

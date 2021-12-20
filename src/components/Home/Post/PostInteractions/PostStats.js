@@ -2,7 +2,8 @@ import React from "react";
 
 import classes from "./PostStats.module.css";
 
-const PostStats = ({ likes = 0, dislikes = 0, comments = 0 }) => {
+const PostStats = ({ likes, dislikes, comments }) => {
+	console.log(likes, dislikes);
 	return (
 		<div className={classes.activities}>
 			<div className={classes.leftActivities}>

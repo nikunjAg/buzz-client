@@ -3,13 +3,20 @@ import React, { useRef } from "react";
 import classes from "./PostInteraction.module.css";
 import AddComment from "./AddComment";
 import PostStats from "./PostStats";
+import { useDispatch } from "react-redux";
+import { likePost, dislikePost } from "../../../../store/actions/feed.action";
 
-const PostActivity = () => {
+const PostActivity = ({ id, likes, dislikes, comments }) => {
 	const commentInputRef = useRef();
+	const dispatch = useDispatch();
 
-	const likeClickedHandler = () => {};
+	const likeClickedHandler = () => {
+		dispatch(likePost(id));
+	};
 
-	const dislikeClickedHandler = () => {};
+	const dislikeClickedHandler = () => {
+		dispatch(dislikePost(id));
+	};
 
 	const commentClickedHandler = () => {
 		commentInputRef.current.focus();
@@ -17,9 +24,9 @@ const PostActivity = () => {
 
 	return (
 		<div className={classes.postActivity}>
-			<PostStats />
-			<div className={classes.actions} onClick={likeClickedHandler}>
-				<div className={classes.action}>
+			<PostStats likes={likes} dislikes={dislikes} comments={comments} />
+			<div className={classes.actions}>
+				<div className={classes.action} onClick={likeClickedHandler}>
 					<span className="material-icons-outlined">thumb_up</span>
 					<span>Like</span>
 				</div>

@@ -8,7 +8,19 @@ import Card from "../../UI/Card/Card";
 import Avatar from "../../UI/Avatar/Avatar";
 import PostInteraction from "./PostInteractions/PostInteraction";
 
-const Post = ({ content, postedBy, createdAt, images }) => {
+const Post = ({
+	_id,
+	content,
+	postedBy,
+	createdAt,
+	images,
+	likes,
+	isLiked,
+	dislikes,
+	isDisliked,
+	comments,
+}) => {
+	console.log("Post Rendered");
 	return (
 		<Card className={classes.post}>
 			<div className={classes.header}>
@@ -37,9 +49,14 @@ const Post = ({ content, postedBy, createdAt, images }) => {
 					</div>
 				))}
 			</div>
-			<PostInteraction />
+			<PostInteraction
+				id={_id}
+				likes={likes}
+				dislikes={dislikes}
+				comments={comments}
+			/>
 		</Card>
 	);
 };
 
-export default Post;
+export default React.memo(Post);

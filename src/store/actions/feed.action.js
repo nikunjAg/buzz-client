@@ -31,3 +31,35 @@ export const fetchFeed = () => {
 		}
 	};
 };
+
+export const LIKE_DISLIKE_POST_SUCCESS = "LIKE_POST_SUCCESS";
+
+const likeDislikePostSuccess = (postId, likes, dislikes) => {
+	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, likes, dislikes };
+};
+
+export const likePost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const {
+				data: { likes, dislikes },
+			} = await axios.post(`/posts/${postId}/likes`);
+			dispatch(likeDislikePostSuccess(postId, likes, dislikes));
+		} catch (error) {
+			dispatch(errorHandler(error));
+		}
+	};
+};
+
+export const dislikePost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const {
+				data: { likes, dislikes },
+			} = await axios.post(`/posts/${postId}/dislikes`);
+			dispatch(likeDislikePostSuccess(postId, likes, dislikes));
+		} catch (error) {
+			dispatch(errorHandler(error));
+		}
+	};
+};

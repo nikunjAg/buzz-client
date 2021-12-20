@@ -1,4 +1,5 @@
 import axios from "../../axios";
+import { addToast, errorHandler } from "./toast.action";
 
 export const USER_LOGIN_STARTED = "USER_LOGIN_STARTED";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
@@ -17,12 +18,12 @@ const userLoginSuccess = (user) => {
 	};
 };
 
-const userLoginFailed = (errMessage) => {
+/* const userLoginFailed = (errMessage) => {
 	return {
 		type: USER_LOGIN_FAILED,
 		error_message: errMessage,
 	};
-};
+}; */
 
 export const autoLoginUser = () => {
 	return async (dispatch) => {
@@ -30,25 +31,16 @@ export const autoLoginUser = () => {
 			dispatch(userLoginStarted());
 
 			const {
-				data: { user },
+				data: { user, message },
 			} = await axios.get("/users/me", {
 				withCredentials: true,
 			});
 
 			dispatch(userLoginSuccess(user));
+			dispatch(addToast({ type: "success", message }));
 		} catch (err) {
 			console.log(err);
-			if (err.response) {
-				dispatch(userLoginFailed(err.response.data.message));
-			} else if (err.request) {
-				dispatch(userLoginFailed("Unable to get response"));
-			} else {
-				dispatch(
-					userLoginFailed(
-						"Unable to send request, Check your connection"
-					)
-				);
-			}
+			dispatch(errorHandler(err));
 		}
 	};
 };

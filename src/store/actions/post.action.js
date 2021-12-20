@@ -1,4 +1,5 @@
 import axios from "../../axios";
+import { addToast, errorHandler } from "./toast.action";
 
 export const SAVE_POST_STARTED = "SAVE_POST_STARTED";
 export const SAVE_POST_SUCCESS = "SAVE_POST_SUCCESS";
@@ -12,9 +13,9 @@ const savePostSuccess = (post) => {
 	return { type: SAVE_POST_SUCCESS, post };
 };
 
-const savePostFailed = (errMessage) => {
+/* const savePostFailed = (errMessage) => {
 	return { type: SAVE_POST_FAILED, error_message: errMessage };
-};
+}; */
 
 export const savePost = (postData) => {
 	return async (dispatch) => {
@@ -30,14 +31,9 @@ export const savePost = (postData) => {
 			});
 
 			dispatch(savePostSuccess(data.post));
+			dispatch(addToast({ type: "success", error: data.message }));
 		} catch (err) {
-			if (err.response) {
-				dispatch(savePostFailed(err.response.data.message));
-			} else if (err.request) {
-				dispatch(savePostFailed("Unable to get response."));
-			} else {
-				dispatch(savePostFailed("Please check your connection."));
-			}
+			dispatch(errorHandler(err));
 		}
 	};
 };

@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import classes from "./Login.module.css";
 import { BASE_URL } from "../../axios";
 import Loading from "../UI/Loading/Loading";
-import ErrorMessage from "../UI/Messages/ErrorMessage";
+// import ErrorMessage from "../UI/Messages/ErrorMessage";
 
 const Login = (props) => {
-	const [loginTried, setLoginTried] = useState(false);
+	// const [loginTried, setLoginTried] = useState(false);
 
 	const googleSSOHandler = async () => {
 		const GOOGLE_LOGIN_URL = `${BASE_URL}/auth/google`;
@@ -23,24 +23,25 @@ const Login = (props) => {
 					clearInterval(timer);
 
 					props.onLoginUser();
-					setLoginTried(true);
+					// setLoginTried(true);
 				}
 			}, 300);
 		}
 	};
 
-	const errorClearedHandler = () => {
+	/* const errorClearedHandler = () => {
 		setLoginTried(false);
-	};
+	}; */
 
-	const errorHandler = loginTried && props.error && (
+	/* const errorHandler = loginTried && props.error && (
 		<ErrorMessage message={props.error} onTimeout={errorClearedHandler} />
-	);
+	); */
+
 	const loading = props.loading && <Loading className={classes.loading} />;
 
 	return (
 		<div className={classes.login}>
-			{errorHandler}
+			{/* {errorHandler} */}
 			{loading}
 
 			<div className={classes.logo}></div>

@@ -1,4 +1,5 @@
 import axios from "../../axios";
+import { errorHandler } from "./toast.action";
 
 export const FETCH_UNREAD_NOTIFICATIONS_STARTED =
 	"FETCH_UNREAD_NOTIFICATIONS_STARTED";
@@ -15,12 +16,12 @@ const fetchUnreadNotificationsSuccess = (notifications) => {
 	return { type: FETCH_UNREAD_NOTIFICATIONS_SUCCESS, notifications };
 };
 
-const fetchUnreadNotificationsFailed = (errMessage) => {
+/* const fetchUnreadNotificationsFailed = (errMessage) => {
 	return {
 		type: FETCH_UNREAD_NOTIFICATIONS_FAILED,
 		error_message: errMessage,
 	};
-};
+}; */
 
 export const fetchUnreadNotifications = () => {
 	return async (dispatch) => {
@@ -34,21 +35,7 @@ export const fetchUnreadNotifications = () => {
 
 			dispatch(fetchUnreadNotificationsSuccess(notifications));
 		} catch (err) {
-			if (err.response) {
-				dispatch(
-					fetchUnreadNotificationsFailed(err.response.data.message)
-				);
-			} else if (err.request) {
-				dispatch(
-					fetchUnreadNotificationsFailed("Unable to send request.")
-				);
-			} else {
-				dispatch(
-					fetchUnreadNotificationsFailed(
-						"Unable to send request, Check your connection"
-					)
-				);
-			}
+			dispatch(errorHandler(err));
 		}
 	};
 };
@@ -65,12 +52,12 @@ const fetchNotificationsSuccess = (notifications) => {
 	return { type: FETCH_NOTIFICATIONS_SUCCESS, notifications };
 };
 
-const fetchNotificationsFailed = (errMessage) => {
+/* const fetchNotificationsFailed = (errMessage) => {
 	return {
 		type: FETCH_NOTIFICATIONS_FAILED,
 		error_message: errMessage,
 	};
-};
+}; */
 
 export const fetchNotifications = () => {
 	return async (dispatch) => {
@@ -84,17 +71,7 @@ export const fetchNotifications = () => {
 			console.log(notifications);
 			dispatch(fetchNotificationsSuccess(notifications));
 		} catch (err) {
-			if (err.response) {
-				dispatch(fetchNotificationsFailed(err.response.data.message));
-			} else if (err.request) {
-				dispatch(fetchNotificationsFailed("Unable to send request."));
-			} else {
-				dispatch(
-					fetchNotificationsFailed(
-						"Unable to send request, Check your connection"
-					)
-				);
-			}
+			dispatch(errorHandler(err));
 		}
 	};
 };

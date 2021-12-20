@@ -1,8 +1,4 @@
 .successMessage {
-	position: fixed;
-	top: 2rem;
-	width: 100%;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -10,11 +6,12 @@
 }
 
 .message {
-	background-color: #ff8585;
-	color: #fff;
+	background-color: #d4edda;
+	color: #155724;
 
 	font-size: 0.8rem;
 	padding: 3px 10px;
+	border: 1px solid #c3e6cb;
 	border-radius: 10px;
 
 	display: flex;
@@ -24,6 +21,6 @@
 
 .message > span {
 	font-size: 1rem;
-	color: #fff;
+	color: #155724;
 	margin-right: 4px;
 }

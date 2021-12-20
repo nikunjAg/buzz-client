@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 import classes from "./ErrorMessage.module.css";
 
@@ -25,10 +25,11 @@ const ErrorMessage = (props) => {
 		</div>
 	);
 
-	ReactDOM.createPortal(
+	return errorMessageEl;
+	/* return ReactDOM.createPortal(
 		errorMessageEl,
 		document.getElementById("messages-root")
-	);
+	); */
 };
 
 export default ErrorMessage;

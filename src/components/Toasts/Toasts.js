@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./Toasts.module.css";
@@ -7,7 +8,7 @@ import ErrorMessage from "../UI/Messages/ErrorMessage";
 import { removeToast } from "../../store/actions/toast.action";
 
 const Toasts = (props) => {
-	const toasts = useSelector((state) => state.tosts);
+	const toasts = useSelector((state) => state.toasts);
 	const dispatch = useDispatch();
 
 	const removeToastHandler = (toastId) => {
@@ -22,7 +23,7 @@ const Toasts = (props) => {
 						key={toast.id}
 						message={toast.message}
 						timeout={toast.timeout}
-						onTimeout={removeToastHandler.bind(toast.id)}
+						onTimeout={removeToastHandler.bind(null, toast.id)}
 					/>
 				);
 			case "error":
@@ -31,7 +32,7 @@ const Toasts = (props) => {
 						key={toast.id}
 						message={toast.message}
 						timeout={toast.timeout}
-						onTimeout={removeToastHandler.bind(toast.id)}
+						onTimeout={removeToastHandler.bind(null, toast.id)}
 					/>
 				);
 			default:
@@ -40,13 +41,17 @@ const Toasts = (props) => {
 						key={toast.id}
 						message={toast.message}
 						timeout={toast.timeout}
-						onTimeout={removeToastHandler.bind(toast.id)}
+						onTimeout={removeToastHandler.bind(null, toast.id)}
 					/>
 				);
 		}
 	});
 
-	return <div className={classes.toasts}>{toastsMessages}</div>;
+	const toastsEl = <div className={classes.toasts}>{toastsMessages}</div>;
+	return ReactDOM.createPortal(
+		toastsEl,
+		document.getElementById("messages-root")
+	);
 };
 
 export default Toasts;

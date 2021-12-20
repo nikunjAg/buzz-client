@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 import classes from "./SuccessMessage.module.css";
 
@@ -19,16 +19,18 @@ const SuccessMessage = (props) => {
 	const successMessageEl = (
 		<div className={classes.successMessage}>
 			<p className={classes.message}>
-				<span class="material-icons-outlined">error</span>
+				<span className="material-icons-outlined">check</span>
 				{message}
 			</p>
 		</div>
 	);
 
-	ReactDOM.createPortal(
+	return successMessageEl;
+
+	/* return ReactDOM.createPortal(
 		successMessageEl,
 		document.getElementById("messages-root")
-	);
+	); */
 };
 
 export default SuccessMessage;

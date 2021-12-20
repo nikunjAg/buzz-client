@@ -21,7 +21,7 @@ const Feed = (props) => {
 			{loading && <Spinner />}
 			<div className={classes.sortController}>
 				<span>Sort By:</span>
-				<select className={classes.sortSelect} value="top">
+				<select className={classes.sortSelect}>
 					<option value="top">Top</option>
 					<option value="bop">Bop</option>
 				</select>

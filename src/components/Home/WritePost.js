@@ -1,27 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./WritePost.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
 import Spinner from "../UI/Spinner/Spinner";
-import ErrorMessage from "../UI/ErrorMessage/ErrorMessage";
 import { savePost } from "../../store/actions/post.action";
 
 const WritePost = (props) => {
 	const captionInputRef = useRef();
 	const [images, setImages] = useState([]);
-	const [showError, setShowError] = useState(false);
 
 	const profileImage = useSelector((state) => state.user.profileImage);
-	const { loading, error } = useSelector((state) => state.post);
+	const { loading } = useSelector((state) => state.post);
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (error) {
-			setShowError(true);
-		}
-	}, [error]);
 
 	const deleteImageHandler = (index) => {
 		setImages((oldImages) => [
@@ -80,10 +72,6 @@ const WritePost = (props) => {
 		}
 	};
 
-	const errorClearHandler = () => {
-		setShowError(false);
-	};
-
 	let imagesPreview;
 	if (images.length > 0) {
 		imagesPreview = (
@@ -106,9 +94,6 @@ const WritePost = (props) => {
 	return (
 		<Card className={classes.card}>
 			{loading && <Spinner />}
-			{error && showError && (
-				<ErrorMessage message={error} onTimeout={errorClearHandler} />
-			)}
 			<div className={classes.writePost}>
 				<Avatar
 					className={classes.avatar}

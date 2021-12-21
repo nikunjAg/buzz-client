@@ -1,5 +1,5 @@
 import axios from "../../axios";
-import { errorHandler } from "./toast.action";
+import { addToast, errorHandler } from "./toast.action";
 
 export const FETCH_FEED_STARTED = "FETCH_FEED_STARTED";
 export const FETCH_FEED_SUCCESS = "FETCH_FEED_SUCCESS";
@@ -32,10 +32,14 @@ export const fetchFeed = () => {
 	};
 };
 
-export const LIKE_DISLIKE_POST_SUCCESS = "LIKE_POST_SUCCESS";
+export const LIKE_DISLIKE_POST_SUCCESS = "LIKE_DISLIKE_POST_SUCCESS";
+export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 
 const likeDislikePostSuccess = (postId, likes, dislikes) => {
 	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, likes, dislikes };
+};
+const commentPostSuccess = (postId, comments) => {
+	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, comments };
 };
 
 export const likePost = (postId) => {
@@ -58,6 +62,21 @@ export const dislikePost = (postId) => {
 				data: { likes, dislikes },
 			} = await axios.post(`/posts/${postId}/dislikes`);
 			dispatch(likeDislikePostSuccess(postId, likes, dislikes));
+		} catch (error) {
+			dispatch(errorHandler(error));
+		}
+	};
+};
+
+export const commentPost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const {
+				data: { message, comments },
+			} = await axios.post(`/posts/${postId}/comments`);
+
+			dispatch(commentPostSuccess(postId, comments));
+			dispatch(addToast({ type: "success", message: message }));
 		} catch (error) {
 			dispatch(errorHandler(error));
 		}

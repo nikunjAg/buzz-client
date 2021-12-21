@@ -5,7 +5,7 @@ import classes from "./ShortProfile.module.css";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
 
-const ProfileCard = () => {
+const ShortProfile = () => {
 	const { name, shortBio, profileImage, coverImage, postsCount } =
 		useSelector((state) => state.user);
 
@@ -38,4 +38,4 @@ const ProfileCard = () => {
 	);
 };
 
-export default ProfileCard;
+export default ShortProfile;

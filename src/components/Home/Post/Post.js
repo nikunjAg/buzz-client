@@ -53,6 +53,8 @@ const Post = ({
 				id={_id}
 				likes={likes}
 				dislikes={dislikes}
+				isLiked={isLiked}
+				isDisliked={isDisliked}
 				comments={comments}
 			/>
 		</Card>

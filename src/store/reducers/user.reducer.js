@@ -1,4 +1,5 @@
 import { USER_LOGIN_STARTED, USER_LOGIN_SUCCESS } from "../actions/auth.action";
+import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
 const initialState = {
 	userId: "",
@@ -24,6 +25,8 @@ const userReducer = (state = initialState, action) => {
 				postsCount: action.user.postsCount,
 				isModerator: action.user.isModerator,
 			};
+		case SAVE_POST_SUCCESS:
+			return { ...state, postsCount: state.postsCount + 1 };
 		default:
 			return state;
 	}

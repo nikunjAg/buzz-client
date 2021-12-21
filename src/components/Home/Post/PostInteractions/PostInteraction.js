@@ -6,7 +6,14 @@ import PostStats from "./PostStats";
 import { useDispatch } from "react-redux";
 import { likePost, dislikePost } from "../../../../store/actions/feed.action";
 
-const PostActivity = ({ id, likes, dislikes, comments }) => {
+const PostActivity = ({
+	id,
+	likes,
+	dislikes,
+	isLiked,
+	isDisliked,
+	comments,
+}) => {
 	const commentInputRef = useRef();
 	const dispatch = useDispatch();
 
@@ -24,14 +31,39 @@ const PostActivity = ({ id, likes, dislikes, comments }) => {
 
 	return (
 		<div className={classes.postActivity}>
-			<PostStats likes={likes} dislikes={dislikes} comments={comments} />
+			<PostStats
+				id={id}
+				likes={likes}
+				dislikes={dislikes}
+				comments={comments}
+			/>
 			<div className={classes.actions}>
-				<div className={classes.action} onClick={likeClickedHandler}>
-					<span className="material-icons-outlined">thumb_up</span>
+				<div
+					className={`${classes.action} ${isLiked && classes.active}`}
+					onClick={likeClickedHandler}
+				>
+					<span
+						className={`material-icons${
+							isLiked ? "" : "-outlined"
+						}`}
+					>
+						thumb_up
+					</span>
 					<span>Like</span>
 				</div>
-				<div className={classes.action} onClick={dislikeClickedHandler}>
-					<span className="material-icons-outlined">thumb_down</span>
+				<div
+					className={`${classes.action} ${
+						isDisliked && classes.active
+					}`}
+					onClick={dislikeClickedHandler}
+				>
+					<span
+						className={`material-icons${
+							isDisliked ? "" : "-outlined"
+						}`}
+					>
+						thumb_down
+					</span>
 					<span>Disike</span>
 				</div>
 				<div className={classes.action} onClick={commentClickedHandler}>

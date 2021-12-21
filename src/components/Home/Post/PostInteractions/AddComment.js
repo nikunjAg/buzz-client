@@ -11,8 +11,8 @@ const AddComment = React.forwardRef((props, ref) => {
 
 	const formSubmitHandler = (event) => {
 		event.preventDefault();
-		console.log("Submitting");
-		dispatch(commentPost(props.id));
+		if (ref.current.value.trim().length === 0) return;
+		dispatch(commentPost(props.postId));
 	};
 
 	return (

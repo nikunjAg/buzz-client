@@ -38,10 +38,7 @@ const PostActivity = ({
 				comments={comments}
 			/>
 			<div className={classes.actions}>
-				<div
-					className={`${classes.action} ${isLiked && classes.active}`}
-					onClick={likeClickedHandler}
-				>
+				<div className={classes.action} onClick={likeClickedHandler}>
 					<span
 						className={`material-icons${
 							isLiked ? "" : "-outlined"
@@ -51,12 +48,7 @@ const PostActivity = ({
 					</span>
 					<span>Like</span>
 				</div>
-				<div
-					className={`${classes.action} ${
-						isDisliked && classes.active
-					}`}
-					onClick={dislikeClickedHandler}
-				>
+				<div className={classes.action} onClick={dislikeClickedHandler}>
 					<span
 						className={`material-icons${
 							isDisliked ? "" : "-outlined"
@@ -73,7 +65,7 @@ const PostActivity = ({
 					<span>Comment</span>
 				</div>
 			</div>
-			<AddComment ref={commentInputRef} />
+			<AddComment postId={id} ref={commentInputRef} />
 		</div>
 	);
 };

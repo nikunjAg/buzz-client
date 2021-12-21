@@ -38,8 +38,9 @@ export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 const likeDislikePostSuccess = (postId, likes, dislikes) => {
 	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, likes, dislikes };
 };
+
 const commentPostSuccess = (postId, comments) => {
-	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, comments };
+	return { type: COMMENT_POST_SUCCESS, postId, comments };
 };
 
 export const likePost = (postId) => {

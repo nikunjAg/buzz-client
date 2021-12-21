@@ -3,6 +3,7 @@ import {
 	FETCH_FEED_SUCCESS,
 	FETCH_FEED_FAILED,
 	LIKE_DISLIKE_POST_SUCCESS,
+	COMMENT_POST_SUCCESS,
 } from "../actions/feed.action";
 
 const initialState = {
@@ -30,6 +31,18 @@ const feedReducer = (state = initialState, action) => {
 								isDisliked: post.dislikes < action.dislikes,
 								likes: action.likes,
 								dislikes: action.dislikes,
+						  }
+						: post
+				),
+			};
+		case COMMENT_POST_SUCCESS:
+			return {
+				...state,
+				posts: state.posts.map((post) =>
+					post._id === action.postId
+						? {
+								...post,
+								comments: action.comments,
 						  }
 						: post
 				),

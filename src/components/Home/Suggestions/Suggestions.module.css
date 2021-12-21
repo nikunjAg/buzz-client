@@ -1,0 +1,48 @@
+.suggestionsFallback {
+	padding: 1rem;
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.suggestionsFallback > p {
+	font-size: 0.85rem;
+	font-weight: 400;
+	text-align: center;
+	color: #555;
+}
+
+.suggestions {
+	position: relative;
+
+	margin-top: 1rem;
+	overflow: hidden;
+
+	max-height: 13rem;
+	overflow-y: overlay;
+}
+
+.suggestions > h3 {
+	font-weight: 500;
+	font-size: 1rem;
+	padding: 10px 15px;
+
+	color: #555;
+}
+
+.suggestions::-webkit-scrollbar {
+	width: 6px; /* width of the entire scrollbar */
+}
+
+.suggestions::-webkit-scrollbar-track {
+	background: transparent; /* color of the tracking area */
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+	background-color: #fff; /* color of the scroll thumb */
+	border-radius: 28px; /* roundness of the scroll thumb */
+}
+
+.suggestions:hover::-webkit-scrollbar-thumb {
+	background-color: #ddd;
+}

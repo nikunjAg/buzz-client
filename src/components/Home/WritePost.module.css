@@ -1,5 +1,6 @@
 .card {
 	position: relative;
+	min-height: 3.5rem;
 }
 
 .writePost {

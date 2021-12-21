@@ -3,8 +3,8 @@ import React from "react";
 import classes from "./Home.module.css";
 import ShortProfile from "./ShortProfile";
 import WritePost from "./WritePost";
-import Friends from "./Friends";
-import Suggestions from "./Suggestions";
+import Friends from "./Suggestions/Friends";
+import Suggestions from "./Suggestions/Suggestions";
 import Feed from "./Feed/Feed";
 
 const Home = (props) => {

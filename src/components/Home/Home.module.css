@@ -33,15 +33,38 @@
 		grid-template-areas:
 			"lefty righty"
 			"main main";
+		grid-template-rows: min-content min-content;
 	}
 
-	/* .Left > div {
+	.left {
+		height: fit-content;
+	}
+
+	.left > div {
 		width: 100%;
-	} */
+	}
 
 	.main {
 		width: 80%;
 		margin: 0 auto;
+	}
+
+	.right {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		height: fit-content;
+	}
+
+	.right > div {
+		flex: 1;
+		height: 100%;
+		margin-top: 0rem;
+	}
+
+	.right > div:first-of-type {
+		margin-right: 1rem;
 	}
 }
 

@@ -1,3 +1,7 @@
+.feed {
+	min-height: 4.5rem;
+}
+
 .sortController {
 	margin: 10px 0px;
 	font-size: 0.85rem;
@@ -17,6 +21,7 @@
 
 .feedFallback {
 	padding: 1rem;
+	margin-top: 1rem;
 }
 
 .feedFallback > p {

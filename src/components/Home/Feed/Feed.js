@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./Feed.module.css";
@@ -16,35 +16,41 @@ const Feed = (props) => {
 	}, [dispatch, posts.length]);
 
 	let feedContent = (
-		<div className={classes.posts}>
-			{posts.map((post) => (
-				<Post key={post._id} {...post} />
-			))}
-		</div>
+		<Card className={classes.feedFallback}>
+			<p>
+				Write your own posts
+				<br />
+				<span>or start following someone to view his posts.</span>
+			</p>
+		</Card>
 	);
 
-	if (posts.length === 0) {
+	if (loading) {
+		feedContent = <Spinner />;
+	}
+
+	if (posts.length > 0) {
 		feedContent = (
-			<Card className={classes.feedFallback}>
-				<p>
-					Write your own posts
-					<br />
-					<span>or start following someone to view his posts.</span>
-				</p>
-			</Card>
+			<Fragment>
+				<div className={classes.sortController}>
+					<span>Sort By:</span>
+					<select className={classes.sortSelect}>
+						<option value="top">Top</option>
+						<option value="bop">Bop</option>
+					</select>
+				</div>
+				<div className={classes.posts}>
+					{posts.map((post) => (
+						<Post key={post._id} {...post} />
+					))}
+				</div>
+			</Fragment>
 		);
 	}
 
 	return (
 		<div className={classes.feed}>
 			{loading && <Spinner />}
-			<div className={classes.sortController}>
-				<span>Sort By:</span>
-				<select className={classes.sortSelect}>
-					<option value="top">Top</option>
-					<option value="bop">Bop</option>
-				</select>
-			</div>
 
 			{feedContent}
 		</div>

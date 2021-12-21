@@ -46,7 +46,7 @@ const PostActivity = ({
 					>
 						thumb_up
 					</span>
-					<span>Like</span>
+					<span>Like{isLiked && "d"}</span>
 				</div>
 				<div className={classes.action} onClick={dislikeClickedHandler}>
 					<span
@@ -56,7 +56,7 @@ const PostActivity = ({
 					>
 						thumb_down
 					</span>
-					<span>Disike</span>
+					<span>Disike{isDisliked && "d"}</span>
 				</div>
 				<div className={classes.action} onClick={commentClickedHandler}>
 					<span className="material-icons-outlined">

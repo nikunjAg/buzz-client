@@ -1,4 +1,6 @@
 .home {
+	min-height: calc(100vh - 4rem);
+
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 	grid-template-areas: "lefty main righty";
@@ -9,6 +11,10 @@
 .left {
 	padding: 1rem;
 	grid-area: lefty;
+}
+
+.left > div {
+	margin-left: auto;
 }
 
 .main {

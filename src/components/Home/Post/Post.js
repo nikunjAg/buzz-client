@@ -45,6 +45,7 @@ const Post = ({
 							cloudName="nagcloudinary"
 							publicId={img}
 							crop="scale"
+							sizes="(min-width: 300px)"
 						/>
 					</div>
 				))}

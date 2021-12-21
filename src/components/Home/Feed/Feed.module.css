@@ -14,3 +14,20 @@
 
 	cursor: pointer;
 }
+
+.feedFallback {
+	padding: 1rem;
+}
+
+.feedFallback > p {
+	text-align: center;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: #556;
+}
+
+.feedFallback > p > span {
+	font-weight: 300;
+	font-size: 0.8rem;
+	color: #888;
+}

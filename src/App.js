@@ -12,6 +12,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Notifications from "./components/Notifications/Notifications";
 import Toasts from "./components/Toasts/Toasts";
+import PostDetail from "./pages/PostDetail";
 
 import { autoLoginUser } from "./store/actions/auth.action";
 import { fetchUnreadNotifications } from "./store/actions/notifications.action";
@@ -59,11 +60,14 @@ function App() {
 					<Route path="/login/success">
 						<LoginSuccess />
 					</Route>
+					<Route path="/feed">
+						<Home />
+					</Route>
 					<Route path="/notifications">
 						<Notifications />
 					</Route>
-					<Route path="/feed">
-						<Home />
+					<Route path="/posts/:id">
+						<PostDetail />
 					</Route>
 					<Redirect to="/feed" />
 				</Switch>

@@ -5,6 +5,7 @@ import {
 	LIKE_DISLIKE_POST_SUCCESS,
 	COMMENT_POST_SUCCESS,
 } from "../actions/feed.action";
+import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
 const initialState = {
 	posts: [],
@@ -19,6 +20,11 @@ const feedReducer = (state = initialState, action) => {
 			return { ...state, loading: false, posts: action.posts };
 		case FETCH_FEED_FAILED:
 			return { ...state, loading: false };
+		case SAVE_POST_SUCCESS:
+			return {
+				...state,
+				posts: [action.post, ...state.posts],
+			};
 		case LIKE_DISLIKE_POST_SUCCESS:
 			console.log(action.postId, action.likes);
 			return {

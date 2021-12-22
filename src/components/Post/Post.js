@@ -18,10 +18,11 @@ const Post = ({
 	dislikes,
 	isDisliked,
 	comments,
+	onClick,
 }) => {
 	console.log("Post Rendered");
 	return (
-		<Card className={classes.post}>
+		<Card className={classes.post} onClick={onClick}>
 			<div className={classes.header}>
 				<Avatar
 					className={classes.avatar}

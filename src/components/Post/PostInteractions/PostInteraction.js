@@ -29,8 +29,16 @@ const PostActivity = ({
 		commentInputRef.current.focus();
 	};
 
+	const postActivityClickedHandler = (event) => {
+		// Stopping so it does not trigger post clicked
+		event.stopPropagation();
+	};
+
 	return (
-		<div className={classes.postActivity}>
+		<div
+			className={classes.postActivity}
+			onClick={postActivityClickedHandler}
+		>
 			<PostStats
 				id={id}
 				likes={likes}

@@ -24,7 +24,7 @@ const Header = () => {
 	return (
 		<header className={classes.header}>
 			<div className={classes.logo}>
-				<NavLink to="/">Logo</NavLink>
+				<NavLink to="/feed">Logo</NavLink>
 			</div>
 			<div className={classes.links}>
 				<div className={classes.user}>

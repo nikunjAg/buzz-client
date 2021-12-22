@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import classes from "./Feed.module.css";
 import Post from "../../Post/Post";
@@ -9,11 +10,17 @@ import { fetchFeed } from "../../../store/actions/feed.action";
 
 const Feed = (props) => {
 	const { posts, loading } = useSelector((state) => state.feed);
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (posts.length === 0) dispatch(fetchFeed());
 	}, [dispatch, posts.length]);
+
+	const postClickedHandler = (postId) => {
+		console.log("Post Clicked Handler");
+		history.push(`/posts/${postId}`);
+	};
 
 	let feedContent = (
 		<Card className={classes.feedFallback}>
@@ -41,7 +48,11 @@ const Feed = (props) => {
 				</div>
 				<div className={classes.posts}>
 					{posts.map((post) => (
-						<Post key={post._id} {...post} />
+						<Post
+							key={post._id}
+							{...post}
+							onClick={postClickedHandler.bind(null, post._id)}
+						/>
 					))}
 				</div>
 			</Fragment>

@@ -9,7 +9,9 @@ const Comments = ({ postId }) => {
 
 	useEffect(() => {
 		const fetchComments = async () => {
-			const comments = await axios.get(`/posts/${postId}/comments`);
+			const {
+				data: { comments },
+			} = await axios.get(`/posts/${postId}/comments`);
 			setComments(comments);
 		};
 
@@ -18,9 +20,16 @@ const Comments = ({ postId }) => {
 		});
 	}, [postId]);
 
-	const commentEls = comments.map((comment) => <Comment {...comment} />);
+	const commentEls = comments.map((comment) => (
+		<Comment key={comment._id} {...comment} />
+	));
 
-	return <div className={classes.comments}>{commentEls}</div>;
+	return (
+		<div className={classes.comments}>
+			<h3>Comments</h3>
+			{commentEls}
+		</div>
+	);
 };
 
 export default Comments;

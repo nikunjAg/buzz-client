@@ -20,9 +20,14 @@ const Post = ({
 	comments,
 	onClick,
 }) => {
-	console.log("Post Rendered");
+	console.log("Post Rendered", _id);
+
+	const postClickedHandler = () => {
+		onClick(_id);
+	};
+
 	return (
-		<Card className={classes.post} onClick={onClick}>
+		<Card className={classes.post} onClick={postClickedHandler}>
 			<div className={classes.header}>
 				<Avatar
 					className={classes.avatar}

@@ -9,10 +9,16 @@ const AddComment = React.forwardRef((props, ref) => {
 	const profileImage = useSelector((state) => state.user.profileImage);
 	const dispatch = useDispatch();
 
+	const clearFormHandler = () => {
+		ref.current.value = "";
+	};
+
 	const formSubmitHandler = (event) => {
 		event.preventDefault();
-		if (ref.current.value.trim().length === 0) return;
-		dispatch(commentPost(props.postId));
+		const content = ref.current.value.trim();
+		if (content.length === 0) return;
+		dispatch(commentPost(props.postId, content));
+		clearFormHandler();
 	};
 
 	return (

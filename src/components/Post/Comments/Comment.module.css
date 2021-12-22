@@ -1,0 +1,46 @@
+.comment {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+
+.avatar {
+	width: 30px;
+	height: 30px;
+
+	margin-top: 5px;
+}
+
+.body {
+	flex: 1;
+	background-color: #ddd;
+	border-radius: 8px;
+	padding: 8px 10px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+
+.author > h4 {
+	font-size: 0.8rem;
+	color: #222;
+	font-weight: 600;
+	margin-bottom: 3px;
+}
+
+.content {
+	font-size: 0.9rem;
+	color: #222;
+	font-weight: 400;
+}
+
+.postedAt {
+	font-size: 11px;
+	font-weight: 300;
+	color: #555;
+}

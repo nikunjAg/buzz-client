@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -17,10 +17,13 @@ const Feed = (props) => {
 		if (posts.length === 0) dispatch(fetchFeed());
 	}, [dispatch, posts.length]);
 
-	const postClickedHandler = (postId) => {
-		console.log("Post Clicked Handler");
-		history.push(`/posts/${postId}`);
-	};
+	const postClickedHandler = useCallback(
+		(postId) => {
+			console.log("Post Clicked Handler");
+			history.push(`/posts/${postId}`);
+		},
+		[history]
+	);
 
 	let feedContent = (
 		<Card className={classes.feedFallback}>
@@ -51,7 +54,7 @@ const Feed = (props) => {
 						<Post
 							key={post._id}
 							{...post}
-							onClick={postClickedHandler.bind(null, post._id)}
+							onClick={postClickedHandler}
 						/>
 					))}
 				</div>

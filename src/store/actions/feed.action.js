@@ -69,12 +69,12 @@ export const dislikePost = (postId) => {
 	};
 };
 
-export const commentPost = (postId) => {
+export const commentPost = (postId, content) => {
 	return async (dispatch) => {
 		try {
 			const {
 				data: { message, comments },
-			} = await axios.post(`/posts/${postId}/comments`);
+			} = await axios.post(`/posts/${postId}/comments`, { content });
 
 			dispatch(commentPostSuccess(postId, comments));
 			dispatch(addToast({ type: "success", message: message }));

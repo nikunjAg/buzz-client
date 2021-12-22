@@ -1,0 +1,13 @@
+.comments {
+	padding: 1rem;
+	border-radius: 4px;
+
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.26);
+}
+
+.comments > h3 {
+	font-size: 1.2rem;
+	font-weight: 500;
+	margin-bottom: 1rem;
+	color: #222;
+}

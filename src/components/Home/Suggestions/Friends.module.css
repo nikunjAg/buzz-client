@@ -3,6 +3,8 @@
 	height: 3.5rem;
 	display: flex;
 	align-items: center;
+	position: sticky;
+	top: 5rem;
 }
 
 .friendsFallback > p {
@@ -17,6 +19,8 @@
 
 	max-height: 13rem;
 	overflow-y: overlay;
+	position: sticky;
+	top: 5rem;
 }
 
 .friends > h3 {

@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./AddComment.module.css";
-import Avatar from "../../../UI/Avatar/Avatar";
-import { commentPost } from "../../../../store/actions/feed.action";
+import Avatar from "../../UI/Avatar/Avatar";
+import { commentPost } from "../../../store/actions/feed.action";
 
 const AddComment = React.forwardRef((props, ref) => {
 	const profileImage = useSelector((state) => state.user.profileImage);

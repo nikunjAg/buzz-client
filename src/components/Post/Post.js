@@ -2,10 +2,9 @@ import React from "react";
 import { Image } from "cloudinary-react";
 
 import classes from "./Post.module.css";
-import profileImage from "../../../assets/profile.jpg";
-import formatDate from "../../../util/DateFormat";
-import Card from "../../UI/Card/Card";
-import Avatar from "../../UI/Avatar/Avatar";
+import formatDate from "../../util/DateFormat";
+import Card from "../UI/Card/Card";
+import Avatar from "../UI/Avatar/Avatar";
 import PostInteraction from "./PostInteractions/PostInteraction";
 
 const Post = ({
@@ -26,7 +25,7 @@ const Post = ({
 			<div className={classes.header}>
 				<Avatar
 					className={classes.avatar}
-					src={profileImage}
+					src={postedBy.profileImage}
 					alt="Post Author"
 				/>
 				<div className={classes.author}>

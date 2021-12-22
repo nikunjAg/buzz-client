@@ -4,7 +4,7 @@ import classes from "./PostInteraction.module.css";
 import AddComment from "./AddComment";
 import PostStats from "./PostStats";
 import { useDispatch } from "react-redux";
-import { likePost, dislikePost } from "../../../../store/actions/feed.action";
+import { likePost, dislikePost } from "../../../store/actions/feed.action";
 
 const PostActivity = ({
 	id,

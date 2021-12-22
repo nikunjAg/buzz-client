@@ -13,7 +13,8 @@
 }
 
 .suggestions {
-	position: relative;
+	position: sticky;
+	top: 19rem;
 
 	margin-top: 1rem;
 	overflow: hidden;

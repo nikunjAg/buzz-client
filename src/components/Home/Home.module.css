@@ -11,6 +11,10 @@
 .left {
 	padding: 1rem;
 	grid-area: lefty;
+	position: sticky;
+	top: 4rem;
+	z-index: 1;
+	height: fit-content;
 }
 
 .left > div {
@@ -38,6 +42,7 @@
 
 	.left {
 		height: fit-content;
+		position: static;
 	}
 
 	.left > div {

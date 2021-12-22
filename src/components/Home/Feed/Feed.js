@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import classes from "./Feed.module.css";
-import Post from "../Post/Post";
+import Post from "../../Post/Post";
 import Spinner from "../../UI/Spinner/Spinner";
 import Card from "../../UI/Card/Card";
 import { fetchFeed } from "../../../store/actions/feed.action";

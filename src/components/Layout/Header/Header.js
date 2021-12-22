@@ -27,14 +27,14 @@ const Header = () => {
 				<NavLink to="/feed">Logo</NavLink>
 			</div>
 			<div className={classes.links}>
-				<div className={classes.user}>
+				<NavLink className={classes.user} to="/profile">
 					<Avatar
 						className={classes.avatar}
 						src={profileImage}
 						alt="Avatar"
 					/>
 					<div className={classes.userName}>{name}</div>
-				</div>
+				</NavLink>
 				<NavLink to="/notifications" className={classes.icon}>
 					<span
 						className={`material-icons ${classes["material-icons"]}`}

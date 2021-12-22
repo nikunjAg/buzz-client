@@ -39,6 +39,8 @@
 }
 
 .user {
+	text-decoration: none;
+
 	margin-right: 1rem;
 	padding: 8px;
 	border-radius: 4px;

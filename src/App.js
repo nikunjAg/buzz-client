@@ -70,7 +70,7 @@ function App() {
 					<Route path="/posts/:id">
 						<PostDetail />
 					</Route>
-					<Route path="/profile">
+					<Route path="/profile/:id">
 						<ProfilePage />
 					</Route>
 					<Redirect to="/feed" />

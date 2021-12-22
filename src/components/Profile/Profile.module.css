@@ -1,3 +1,20 @@
+.profileFallback {
+	text-align: center;
+	padding: 1rem;
+}
+
+.profileFallback > p {
+	font-weight: 500;
+	color: #444;
+	font-size: 1.1rem;
+}
+
+.profileFallback > small {
+	font-weight: 300;
+	color: #888;
+	font-size: 0.9rem;
+}
+
 .profile {
 	width: 600px;
 	max-width: 95%;

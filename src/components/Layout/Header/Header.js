@@ -6,7 +6,7 @@ import classes from "./Header.module.css";
 import Avatar from "../../UI/Avatar/Avatar";
 
 const Header = () => {
-	const { name, profileImage } = useSelector((state) => state.user);
+	const { userId, name, profileImage } = useSelector((state) => state.user);
 
 	const unreadNotificationsCount = useSelector(
 		(state) => state.notifications.unreadNotifications.length
@@ -27,7 +27,7 @@ const Header = () => {
 				<NavLink to="/feed">Logo</NavLink>
 			</div>
 			<div className={classes.links}>
-				<NavLink className={classes.user} to="/profile">
+				<NavLink className={classes.user} to={`/profile/${userId}`}>
 					<Avatar
 						className={classes.avatar}
 						src={profileImage}

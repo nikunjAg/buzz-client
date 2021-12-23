@@ -36,8 +36,14 @@ export const LIKE_DISLIKE_POST_SUCCESS = "LIKE_DISLIKE_POST_SUCCESS";
 export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
 export const FLAG_POST_SUCCESS = "FLAG_POST_SUCCESS";
 
-const likeDislikePostSuccess = (postId, likes, dislikes) => {
-	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, likes, dislikes };
+const likeDislikePostSuccess = (postId, post, isLiked, isDisliked) => {
+	return {
+		type: LIKE_DISLIKE_POST_SUCCESS,
+		postId,
+		post,
+		isLiked,
+		isDisliked,
+	};
 };
 
 const commentPostSuccess = (postId, comments) => {
@@ -48,26 +54,28 @@ const flagPostSuccess = (postId, post) => {
 	return { type: FLAG_POST_SUCCESS, postId, post };
 };
 
-export const likePost = (postId) => {
+export const likePost = (postId, unlike) => {
 	return async (dispatch) => {
 		try {
 			const {
-				data: { likes, dislikes },
-			} = await axios.post(`/posts/${postId}/likes`);
-			dispatch(likeDislikePostSuccess(postId, likes, dislikes));
+				data: { isLiked, isDisliked, post },
+			} = await axios.post(`/posts/${postId}/likes`, {
+				unlike,
+			});
+			dispatch(likeDislikePostSuccess(postId, post, isLiked, isDisliked));
 		} catch (error) {
 			dispatch(errorHandler(error));
 		}
 	};
 };
 
-export const dislikePost = (postId) => {
+export const dislikePost = (postId, undislike) => {
 	return async (dispatch) => {
 		try {
 			const {
-				data: { likes, dislikes },
-			} = await axios.post(`/posts/${postId}/dislikes`);
-			dispatch(likeDislikePostSuccess(postId, likes, dislikes));
+				data: { isLiked, isDisliked, post },
+			} = await axios.post(`/posts/${postId}/dislikes`, { undislike });
+			dispatch(likeDislikePostSuccess(postId, post, isLiked, isDisliked));
 		} catch (error) {
 			dispatch(errorHandler(error));
 		}

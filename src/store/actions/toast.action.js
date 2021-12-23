@@ -11,6 +11,7 @@ export const removeToast = (id) => {
 };
 
 export const errorHandler = (error) => {
+	console.error(error);
 	return (dispatch) => {
 		if (error.response) {
 			dispatch(

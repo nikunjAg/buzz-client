@@ -6,6 +6,7 @@ import classes from "./Profile.module.css";
 import Card from "../UI/Card/Card";
 import Spinner from "../UI/Spinner/Spinner";
 import { fetchProfile } from "../../store/actions/profile.action";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
 	const userId = useSelector((state) => state.user.userId);
@@ -13,6 +14,7 @@ const Profile = () => {
 		(state) => state.profile
 	);
 	const { id: profileId } = useParams();
+	const history = useHistory();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -21,6 +23,7 @@ const Profile = () => {
 
 	const editProfileHandler = () => {
 		console.log("Edit Profile Handler");
+		history.push(`/profile/${profileId}/edit`);
 	};
 
 	// Default Content -> No such profile exists
@@ -83,14 +86,16 @@ const Profile = () => {
 						{friends?.length || 0} Friends
 					</p>
 				</div>
-				<div className={classes.userActions}>
-					<button>
-						<span className="material-icons-outlined">
-							person_add
-						</span>{" "}
-						Add Friend
-					</button>
-				</div>
+				{!isMyProfile && (
+					<div className={classes.userActions}>
+						<button>
+							<span className="material-icons-outlined">
+								person_add
+							</span>{" "}
+							Add Friend
+						</button>
+					</div>
+				)}
 			</Fragment>
 		);
 	}

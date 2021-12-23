@@ -27,17 +27,16 @@ const feedReducer = (state = initialState, action) => {
 				posts: [action.post, ...state.posts],
 			};
 		case LIKE_DISLIKE_POST_SUCCESS:
-			console.log(action.postId, action.likes);
 			return {
 				...state,
 				posts: state.posts.map((post) =>
 					post._id === action.postId
 						? {
 								...post,
-								isLiked: post.likes < action.likes,
-								isDisliked: post.dislikes < action.dislikes,
-								likes: action.likes,
-								dislikes: action.dislikes,
+								isLiked: action.isLiked,
+								isDisliked: action.isDisliked,
+								likes: action.post.likes.length,
+								dislikes: action.post.dislikes.length,
 						  }
 						: post
 				),

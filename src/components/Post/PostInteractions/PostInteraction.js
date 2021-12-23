@@ -18,11 +18,13 @@ const PostActivity = ({
 	const dispatch = useDispatch();
 
 	const likeClickedHandler = () => {
-		dispatch(likePost(id));
+		const unlike = isLiked;
+		dispatch(likePost(id, unlike));
 	};
 
 	const dislikeClickedHandler = () => {
-		dispatch(dislikePost(id));
+		const undislike = isDisliked;
+		dispatch(dislikePost(id, undislike));
 	};
 
 	const commentClickedHandler = () => {

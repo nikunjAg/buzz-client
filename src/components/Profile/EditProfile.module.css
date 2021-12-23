@@ -1,0 +1,113 @@
+.editProfile {
+	width: 600px;
+	max-width: 95%;
+
+	margin: 1rem auto;
+}
+
+.imagePicker {
+	width: 100%;
+}
+
+.imagePicker > .previewImage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.previewImage > span {
+	color: #fff;
+	font-size: 1rem;
+}
+
+.imagePicker > .coverImage {
+	height: 10rem;
+	width: 100%;
+	background-color: #aaa;
+	z-index: 1;
+}
+.imagePicker > .profileImage {
+	width: 5rem;
+	height: 5rem;
+	margin-top: -2rem;
+	margin-left: 1rem;
+	background-color: #333;
+	z-index: 2;
+}
+
+.imagePicker > input {
+	display: none;
+}
+
+.row {
+	margin: 1rem;
+	width: 400px;
+	max-width: 95%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.row > .formInput {
+	flex: 1;
+}
+
+.row > .formInput:not(:last-of-type) {
+	margin-right: 1rem;
+}
+
+.formInput > label {
+	display: inline-block;
+	color: #777;
+	font-size: 0.85rem;
+	font-weight: 400;
+	margin-bottom: 4px;
+}
+
+.formInput > input,
+.formInput > select {
+	outline: none;
+	border-image: none;
+	width: 100%;
+
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 8px 12px;
+	font-size: 1rem;
+
+	background-color: #fff;
+}
+
+.formActions {
+	margin: 1rem;
+}
+
+.formActions > button {
+	outline: none;
+	border-image: none;
+
+	cursor: pointer;
+
+	border: 1px solid blue;
+	border-radius: 4px;
+	padding: 8px 12px;
+	font-size: 1rem;
+
+	color: #000;
+
+	margin-right: 1rem;
+}
+
+.formActions > button.filled {
+	background-color: #3089d1;
+	border-color: #3089d1;
+	color: #fff;
+}
+
+.formActions > button.outlined {
+	background-color: #fff;
+	border-color: #3089d1;
+	color: #3089d1;
+}

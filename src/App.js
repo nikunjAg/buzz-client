@@ -14,6 +14,7 @@ import Notifications from "./components/Notifications/Notifications";
 import Toasts from "./components/Toasts/Toasts";
 import PostDetail from "./pages/PostDetail";
 import ProfilePage from "./pages/ProfilePage";
+import EditProfilePage from "./pages/EditProfilePage";
 
 import { autoLoginUser } from "./store/actions/auth.action";
 import { fetchUnreadNotifications } from "./store/actions/notifications.action";
@@ -69,6 +70,9 @@ function App() {
 					</Route>
 					<Route path="/posts/:id">
 						<PostDetail />
+					</Route>
+					<Route path="/profile/:id/edit">
+						<EditProfilePage />
 					</Route>
 					<Route path="/profile/:id">
 						<ProfilePage />

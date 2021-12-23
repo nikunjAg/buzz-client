@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Image } from "cloudinary-react";
 
 import classes from "./Post.module.css";
@@ -6,6 +7,7 @@ import formatDate from "../../util/DateFormat";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
 import PostInteraction from "./PostInteractions/PostInteraction";
+import { flagPost } from "../../store/actions/feed.action";
 
 const Post = ({
 	_id,
@@ -18,12 +20,22 @@ const Post = ({
 	dislikes,
 	isDisliked,
 	comments,
+	isFlagged,
+	isVerified,
 	onClick,
 }) => {
 	console.log("Post Rendered", _id);
+	const dispatch = useDispatch();
 
 	const postClickedHandler = () => {
 		onClick(_id);
+	};
+
+	const flagPostHandler = (event) => {
+		event.stopPropagation();
+		if (!isVerified && !isFlagged) {
+			dispatch(flagPost(_id));
+		}
 	};
 
 	return (
@@ -39,7 +51,23 @@ const Post = ({
 					<p>{formatDate(createdAt)}</p>
 				</div>
 				<div className={classes.more}>
-					<span className="material-icons-outlined">more_horiz</span>
+					{!isVerified && (
+						<div
+							className={`${classes.action} ${
+								isFlagged && classes.active
+							}`}
+							onClick={flagPostHandler}
+						>
+							<span className="material-icons">flag</span>
+						</div>
+					)}
+					{isVerified && (
+						<div
+							className={`${classes.status} ${classes.isVerified}`}
+						>
+							<span className="material-icons">verified</span>
+						</div>
+					)}
 				</div>
 			</div>
 			<div className={classes.content}>{content}</div>

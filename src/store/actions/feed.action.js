@@ -34,6 +34,7 @@ export const fetchFeed = () => {
 
 export const LIKE_DISLIKE_POST_SUCCESS = "LIKE_DISLIKE_POST_SUCCESS";
 export const COMMENT_POST_SUCCESS = "COMMENT_POST_SUCCESS";
+export const FLAG_POST_SUCCESS = "FLAG_POST_SUCCESS";
 
 const likeDislikePostSuccess = (postId, likes, dislikes) => {
 	return { type: LIKE_DISLIKE_POST_SUCCESS, postId, likes, dislikes };
@@ -41,6 +42,10 @@ const likeDislikePostSuccess = (postId, likes, dislikes) => {
 
 const commentPostSuccess = (postId, comments) => {
 	return { type: COMMENT_POST_SUCCESS, postId, comments };
+};
+
+const flagPostSuccess = (postId, post) => {
+	return { type: FLAG_POST_SUCCESS, postId, post };
 };
 
 export const likePost = (postId) => {
@@ -78,6 +83,19 @@ export const commentPost = (postId, content) => {
 
 			dispatch(commentPostSuccess(postId, comments));
 			dispatch(addToast({ type: "success", message: message }));
+		} catch (error) {
+			dispatch(errorHandler(error));
+		}
+	};
+};
+
+export const flagPost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const {
+				data: { post },
+			} = await axios.post(`/posts/${postId}/flagged`);
+			if (post) dispatch(flagPostSuccess(postId, post));
 		} catch (error) {
 			dispatch(errorHandler(error));
 		}

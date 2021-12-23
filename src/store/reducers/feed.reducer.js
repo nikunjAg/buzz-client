@@ -4,6 +4,7 @@ import {
 	FETCH_FEED_FAILED,
 	LIKE_DISLIKE_POST_SUCCESS,
 	COMMENT_POST_SUCCESS,
+	FLAG_POST_SUCCESS,
 } from "../actions/feed.action";
 import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
@@ -49,6 +50,18 @@ const feedReducer = (state = initialState, action) => {
 						? {
 								...post,
 								comments: action.comments,
+						  }
+						: post
+				),
+			};
+		case FLAG_POST_SUCCESS:
+			return {
+				...state,
+				posts: state.posts.map((post) =>
+					post._id === action.postId
+						? {
+								...post,
+								isFlagged: action.post.isFlagged,
 						  }
 						: post
 				),

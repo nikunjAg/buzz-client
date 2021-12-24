@@ -7,6 +7,14 @@ import Avatar from "../UI/Avatar/Avatar";
 import Spinner from "../UI/Spinner/Spinner";
 import { savePost } from "../../store/actions/post.action";
 
+const getStyle = (length, index) => {
+	if (length === 4) return classes.size1;
+	else if (length === 3) {
+		return index === 2 ? classes.size2 : classes.size1;
+	} else if (length === 2) return classes.size1;
+	else return classes.size3;
+};
+
 const WritePost = (props) => {
 	const captionInputRef = useRef();
 	const [images, setImages] = useState([]);
@@ -76,10 +84,16 @@ const WritePost = (props) => {
 	if (images.length > 0) {
 		imagesPreview = (
 			<div className={classes.previewImages}>
-				{images.map((img, index) => (
-					<div key={index} className={classes.preview}>
+				{images.map((img, index, arr) => (
+					<div
+						key={index}
+						className={`${classes.preview} ${getStyle(
+							arr.length,
+							index
+						)}`}
+					>
 						<span
-							className={`material-icons ${classes.deleteImage}`}
+							className="material-icons"
 							onClick={() => deleteImageHandler(index)}
 						>
 							close

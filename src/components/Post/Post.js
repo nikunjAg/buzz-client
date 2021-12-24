@@ -9,6 +9,14 @@ import Avatar from "../UI/Avatar/Avatar";
 import PostInteraction from "./PostInteractions/PostInteraction";
 import { flagPost } from "../../store/actions/feed.action";
 
+const getStyle = (length, index) => {
+	if (length === 4) return classes.size1;
+	else if (length === 3) {
+		return index === 2 ? classes.size2 : classes.size1;
+	} else if (length === 2) return classes.size1;
+	else return classes.size3;
+};
+
 const Post = ({
 	_id,
 	content,
@@ -72,15 +80,15 @@ const Post = ({
 			</div>
 			<div className={classes.content}>{content}</div>
 			<div className={classes.previewImages}>
-				{images.map((img, index) => (
-					<div key={index} className={classes.preview}>
-						<Image
-							cloudName="nagcloudinary"
-							publicId={img}
-							crop="scale"
-							sizes="(min-width: 300px)"
-						/>
-					</div>
+				{images.map((img, index, arr) => (
+					<Image
+						cloudName="nagcloudinary"
+						publicId={img}
+						key={index}
+						className={getStyle(arr.length, index)}
+						crop="scale"
+						sizes="(min-width: 300px)"
+					/>
 				))}
 			</div>
 			<PostInteraction

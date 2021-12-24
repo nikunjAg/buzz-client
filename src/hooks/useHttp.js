@@ -1,4 +1,7 @@
 import { useCallback, useReducer } from "react";
+import { useDispatch } from "react-redux";
+
+import { errorHandler } from "../store/actions/toast.action";
 
 const SEND = "SEND";
 const SUCCESS = "SUCCESS";
@@ -17,36 +20,34 @@ const reducerFn = (state, action) => {
 	}
 };
 
-const useHttp = (requestFn, startLoading = false) => {
+const useHttp = (requestFn, defaultData, startLoading = false) => {
 	const [state, dispatch] = useReducer(reducerFn, {
-		data: null,
+		data: defaultData,
 		loading: startLoading,
 		error: null,
 	});
 
-	const sendRequest = useCallback(async () => {
-		try {
-			dispatch({ type: SEND });
-			const data = await requestFn();
-			dispatch({ type: SUCCESS, data });
-		} catch (error) {
-			if (error.response) {
-				dispatch({ type: ERROR, error: error.response.data.message });
-			} else if (error.request) {
-				dispatch({
-					type: ERROR,
-					error: "Unable to receive a response.",
-				});
-			} else {
-				dispatch({
-					type: ERROR,
-					error: "Unable to send a request!, Please check your connection",
-				});
-			}
-		}
-	}, [dispatch, requestFn]);
+	const reduxDispatch = useDispatch();
 
-	return [sendRequest, state.loading, state.data, state.error];
+	const sendRequest = useCallback(
+		async (...requestData) => {
+			try {
+				dispatch({ type: SEND });
+				const data = await requestFn(...requestData);
+				dispatch({ type: SUCCESS, data });
+			} catch (error) {
+				dispatch({ type: ERROR, error });
+				reduxDispatch(errorHandler(error));
+			}
+		},
+		[dispatch, requestFn, reduxDispatch]
+	);
+	return {
+		sendRequest,
+		loading: state.loading,
+		data: state.data,
+		error: state.error,
+	};
 };
 
 export default useHttp;

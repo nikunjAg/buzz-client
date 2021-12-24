@@ -34,9 +34,9 @@ const EditProfile = (props) => {
 		setProfileImage(null);
 		firstNameRef.current.value = "";
 		lastNameRef.current.value = "";
-		designationRef.current.value = "";
+		designationRef.current.selectedIndex = 0;
 		websiteRef.current.value = "";
-		genderRef.current.value = "";
+		genderRef.current.selectedIndex = 0;
 		birthdateRef.current.value = "";
 		cityRef.current.value = "";
 		stateRef.current.value = "";

@@ -1,3 +1,24 @@
+.editProfileFallback {
+	width: 600px;
+	max-width: 95%;
+
+	margin: 1rem auto;
+
+	text-align: center;
+}
+
+.editProfileFallback > p {
+	font-size: 1rem;
+	font-weight: 500;
+	color: #555;
+	margin-bottom: 3px;
+}
+.editProfileFallback > small {
+	font-size: 0.85rem;
+	font-weight: 300;
+	color: #999;
+}
+
 .editProfile {
 	width: 600px;
 	max-width: 95%;
@@ -14,26 +35,42 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	position: relative;
+}
+
+.previewImage > div {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .previewImage > span {
+	position: absolute;
+	top: calc(50% - 8px);
+	left: calc(50% - 8px);
 	color: #fff;
 	font-size: 1rem;
 }
 
 .imagePicker > .coverImage {
-	height: 10rem;
+	height: 15rem;
 	width: 100%;
 	background-color: #aaa;
 	z-index: 1;
 }
+
 .imagePicker > .profileImage {
 	width: 5rem;
 	height: 5rem;
 	margin-top: -2rem;
 	margin-left: 1rem;
 	background-color: #333;
-	z-index: 2;
+	z-index: 3;
 }
 
 .imagePicker > input {
@@ -52,6 +89,12 @@
 
 .row > .formInput {
 	flex: 1;
+}
+
+.row > .formInput.error > input,
+.row > .formInput.error > select {
+	border-color: #fd9a9a;
+	background-color: #ffd9d9;
 }
 
 .row > .formInput:not(:last-of-type) {
@@ -110,4 +153,11 @@
 	background-color: #fff;
 	border-color: #3089d1;
 	color: #3089d1;
+}
+
+.formActions > button:disabled {
+	background-color: #ccc;
+	color: #666;
+	border-color: #999;
+	cursor: not-allowed;
 }

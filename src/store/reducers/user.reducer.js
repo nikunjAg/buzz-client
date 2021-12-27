@@ -9,6 +9,8 @@ const initialState = {
 	coverImage: "",
 	postsCount: 0,
 	isModerator: false,
+	friends: [],
+	pendingRequests: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -24,6 +26,8 @@ const userReducer = (state = initialState, action) => {
 				coverImage: action.user.coverImage,
 				postsCount: action.user.postsCount,
 				isModerator: action.user.isModerator,
+				friends: action.user.friends,
+				pendingRequests: action.user.pendingRequests,
 			};
 		case SAVE_POST_SUCCESS:
 			return { ...state, postsCount: state.postsCount + 1 };

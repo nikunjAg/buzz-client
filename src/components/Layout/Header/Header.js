@@ -15,10 +15,10 @@ const Header = () => {
 
 	let newNotifications;
 	if (unreadNotificationsCount > 0) {
+		const count =
+			unreadNotificationsCount > 5 ? "5+" : unreadNotificationsCount;
 		newNotifications = (
-			<span className={classes.newNotifications}>
-				{unreadNotificationsCount}
-			</span>
+			<div className={classes.newNotifications}>{count}</div>
 		);
 	}
 

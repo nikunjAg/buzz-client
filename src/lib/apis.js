@@ -11,9 +11,9 @@ export const fetchUserDetails = async ({ userId }) => {
 };
 
 export const fetchFriends = async ({ userId }) => {
-	const { data } = await axios.get(`/users/${userId}/suggestions`);
+	const { data } = await axios.get(`/users/${userId}/friends`);
 
-	return data.suggestions;
+	return data.friends;
 };
 
 export const fetchSuggestions = async ({ userId }) => {

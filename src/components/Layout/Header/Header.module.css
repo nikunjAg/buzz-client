@@ -122,11 +122,20 @@
 .newNotifications {
 	background-color: #e44242;
 	color: #fff;
-	padding: 5px;
 
 	position: absolute;
 	top: -5px;
 	right: -5px;
+
+	width: 20px;
+	height: 20px;
+	padding: 5px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 100%;
 
 	font-size: 10px;
 	font-weight: 500;

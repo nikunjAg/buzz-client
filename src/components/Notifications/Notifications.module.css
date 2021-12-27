@@ -128,13 +128,17 @@
 		gap: 1rem;
 	}
 
+	.sideCard {
+		width: 100%;
+	}
+
 	.sideCard > div {
 		margin: 0 auto;
+		max-width: 80%;
 	}
 
 	.invitations {
-		width: 650px;
-		max-width: 90%;
+		width: 95%;
 		margin: 0rem auto;
 	}
 }

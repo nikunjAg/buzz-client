@@ -5,6 +5,7 @@ import {
 	FETCH_NOTIFICATIONS_STARTED,
 	FETCH_NOTIFICATIONS_SUCCESS,
 	FETCH_NOTIFICATIONS_FAILED,
+	NOTIFICATIONS_UPDATED,
 } from "../actions/notifications.action";
 
 const initialState = {
@@ -29,7 +30,6 @@ const userReducer = (state = initialState, action) => {
 			};
 		case FETCH_UNREAD_NOTIFICATIONS_FAILED:
 			return { ...state, loading: false };
-
 		case FETCH_NOTIFICATIONS_STARTED:
 			return {
 				...state,
@@ -45,6 +45,8 @@ const userReducer = (state = initialState, action) => {
 			};
 		case FETCH_NOTIFICATIONS_FAILED:
 			return { ...state, loading: false };
+		case NOTIFICATIONS_UPDATED:
+			return { ...state, invitations: action.notifications };
 		default:
 			return state;
 	}

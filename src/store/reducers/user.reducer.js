@@ -1,4 +1,5 @@
 import { USER_LOGIN_STARTED, USER_LOGIN_SUCCESS } from "../actions/auth.action";
+import { USER_UPDATE } from "../actions/user.action";
 import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
 const initialState = {
@@ -18,6 +19,7 @@ const userReducer = (state = initialState, action) => {
 		case USER_LOGIN_STARTED:
 			return initialState;
 		case USER_LOGIN_SUCCESS:
+		case USER_UPDATE:
 			return {
 				userId: action.user._id,
 				name: action.user.name,

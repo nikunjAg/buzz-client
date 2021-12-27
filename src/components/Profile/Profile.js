@@ -1,13 +1,13 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import classes from "./Profile.module.css";
 import Card from "../UI/Card/Card";
 import Spinner from "../UI/Spinner/Spinner";
-import { fetchProfile } from "../../store/actions/profile.action";
-import { useHistory } from "react-router-dom";
 import useHttp from "../../hooks/useHttp";
+import { fetchProfile } from "../../store/actions/profile.action";
+import { updateUser } from "../../store/actions/user.action";
 import { sendFriendRequest as sendFriendRequestAPI } from "../../lib/apis";
 
 const Profile = () => {
@@ -37,8 +37,7 @@ const Profile = () => {
 
 	const sendFriendRequestHandler = () => {
 		sendFriendRequest({ sendToUserId: profileId }, (user) => {
-			console.log(user);
-			// dispatch(updateUser(user))
+			dispatch(updateUser(user));
 		});
 	};
 

@@ -21,3 +21,9 @@ export const fetchSuggestions = async (userId) => {
 
 	return data.suggestions;
 };
+
+export const searchUsers = async (name) => {
+	const { data } = await axios.get(`/users/search?name=${name}`);
+
+	return data.users;
+};

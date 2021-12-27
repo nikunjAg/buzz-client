@@ -7,15 +7,24 @@ import Card from "../UI/Card/Card";
 import Spinner from "../UI/Spinner/Spinner";
 import { fetchProfile } from "../../store/actions/profile.action";
 import { useHistory } from "react-router-dom";
+import useHttp from "../../hooks/useHttp";
+import { sendFriendRequest as sendFriendRequestAPI } from "../../lib/apis";
 
 const Profile = () => {
-	const userId = useSelector((state) => state.user.userId);
+	const { userId, friends, pendingRequests } = useSelector(
+		(state) => state.user
+	);
 	const { profileData, loading, error } = useSelector(
 		(state) => state.profile
 	);
+
 	const { id: profileId } = useParams();
 	const history = useHistory();
 	const dispatch = useDispatch();
+	const { sendRequest: sendFriendRequest } = useHttp(
+		sendFriendRequestAPI,
+		null
+	);
 
 	useEffect(() => {
 		dispatch(fetchProfile(profileId));
@@ -24,6 +33,13 @@ const Profile = () => {
 	const editProfileHandler = () => {
 		console.log("Edit Profile Handler");
 		history.push(`/profile/${profileId}/edit`);
+	};
+
+	const sendFriendRequestHandler = () => {
+		sendFriendRequest({ sendToUserId: profileId }, (user) => {
+			console.log(user);
+			// dispatch(updateUser(user))
+		});
 	};
 
 	// Default Content -> No such profile exists
@@ -54,9 +70,11 @@ const Profile = () => {
 
 	// Profile fetched Successfully -> Success
 	if (profileData) {
-		const { name, profileImage, coverImage, friends } = profileData;
+		const { name, profileImage, coverImage, friendsCount } = profileData;
 
 		const isMyProfile = userId === profileId;
+		const isMyFriend = friends.includes(profileId);
+		const hasSentRequest = pendingRequests.includes(profileId);
 
 		profileContent = (
 			<Fragment>
@@ -83,16 +101,19 @@ const Profile = () => {
 					<h4 className={classes.name}>{name}</h4>
 					<p className={classes.shortBio}>Newly recruited at TTN</p>
 					<p className={classes.friends}>
-						{friends?.length || 0} Friends
+						{friendsCount || 0} Friends
 					</p>
 				</div>
-				{!isMyProfile && (
+				{!isMyFriend && (
 					<div className={classes.userActions}>
-						<button>
+						<button
+							disabled={hasSentRequest}
+							onClick={sendFriendRequestHandler}
+						>
 							<span className="material-icons-outlined">
 								person_add
 							</span>{" "}
-							Add Friend
+							{hasSentRequest ? "Request Pending" : "Add Friend"}
 						</button>
 					</div>
 				)}

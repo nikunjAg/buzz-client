@@ -108,6 +108,15 @@
 	border-color: #2c76b3;
 }
 
+.userActions > button:disabled {
+	background-color: #ccc;
+	border-color: #ccc;
+
+	color: #888;
+
+	cursor: not-allowed;
+}
+
 .userActions > button > span {
 	font-size: 1.2rem;
 	margin-right: 5px;

@@ -5,25 +5,31 @@ export const fetchUsers = async () => {
 	return data.users;
 };
 
-export const fetchUserDetails = async (userId) => {
+export const fetchUserDetails = async ({ userId }) => {
 	const { data } = await axios.get(`/users/${userId}`);
 	return data.user;
 };
 
-export const fetchFriends = async (userId) => {
+export const fetchFriends = async ({ userId }) => {
 	const { data } = await axios.get(`/users/${userId}/suggestions`);
 
 	return data.suggestions;
 };
 
-export const fetchSuggestions = async (userId) => {
+export const fetchSuggestions = async ({ userId }) => {
 	const { data } = await axios.get(`/users/${userId}/suggestions`);
 
 	return data.suggestions;
 };
 
-export const searchUsers = async (name) => {
+export const searchUsers = async ({ name }) => {
 	const { data } = await axios.get(`/users/search?name=${name}`);
 
 	return data.users;
+};
+
+export const sendFriendRequest = async ({ sendToUserId }) => {
+	const { data } = await axios.post(`/users/${sendToUserId}/friendRequest`);
+
+	return data.user;
 };

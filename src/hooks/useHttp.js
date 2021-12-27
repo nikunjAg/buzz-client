@@ -30,14 +30,16 @@ const useHttp = (requestFn, defaultData, startLoading = false) => {
 	const reduxDispatch = useDispatch();
 
 	const sendRequest = useCallback(
-		async (...requestData) => {
+		async (requestData, successCb, failureCb) => {
 			try {
 				dispatch({ type: SEND });
-				const data = await requestFn(...requestData);
+				const data = await requestFn(requestData);
 				dispatch({ type: SUCCESS, data });
+				if (successCb) successCb(data);
 			} catch (error) {
 				dispatch({ type: ERROR, error });
 				reduxDispatch(errorHandler(error));
+				if (failureCb) failureCb(error);
 			}
 		},
 		[dispatch, requestFn, reduxDispatch]

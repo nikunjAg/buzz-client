@@ -15,7 +15,7 @@ const Search = (props) => {
 
 	useEffect(() => {
 		const timerId = setTimeout(() => {
-			fetchUsers(userName);
+			fetchUsers({ name: userName });
 		}, 700);
 
 		return () => {

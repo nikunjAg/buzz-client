@@ -21,7 +21,7 @@ const Suggestions = (props) => {
 	} = useHttp(fetchSuggestions, [], true);
 
 	useEffect(() => {
-		getSuggestions(userId);
+		getSuggestions({ userId });
 	}, [userId, getSuggestions]);
 
 	if (suggestions?.length === 0 && !loading) {

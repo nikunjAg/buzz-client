@@ -17,7 +17,7 @@ const Friends = (props) => {
 	} = useHttp(fetchFriends, [], true);
 
 	useEffect(() => {
-		getFriends(userId);
+		getFriends({ userId });
 	}, [userId, getFriends]);
 
 	if (friends?.length === 0 && !loading) {

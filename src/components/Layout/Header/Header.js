@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import classes from "./Header.module.css";
 import Avatar from "../../UI/Avatar/Avatar";
+import Search from "../../Search/Search";
 
 const Header = () => {
 	const { userId, name, profileImage } = useSelector((state) => state.user);
@@ -26,6 +27,7 @@ const Header = () => {
 			<div className={classes.logo}>
 				<NavLink to="/feed">Logo</NavLink>
 			</div>
+			<Search className={classes.search} />
 			<div className={classes.links}>
 				<NavLink className={classes.user} to={`/profile/${userId}`}>
 					<Avatar

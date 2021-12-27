@@ -31,8 +31,11 @@
 	text-indent: -9999px;
 }
 
-.links {
+.search {
 	flex: 1;
+}
+
+.links {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;

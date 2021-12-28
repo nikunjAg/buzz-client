@@ -13,7 +13,7 @@
 }
 
 .suggestions {
-	position: sticky;
+	/* position: sticky; */
 	top: 19rem;
 
 	margin-top: 1rem;

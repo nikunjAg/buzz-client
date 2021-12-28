@@ -59,14 +59,39 @@ const Feed = (props) => {
 		[dispatch]
 	);
 
+	const feedController = (
+		<div className={classes.feedController}>
+			<div className={classes.sortController}>
+				<span>Sort By:</span>
+				<select className={classes.sortSelect}>
+					<option value="top">Top</option>
+					<option value="bop">Bop</option>
+				</select>
+			</div>
+			{isModerator && (
+				<div className={classes.postsTypeController}>
+					<button
+						className={showModeratorFeed && classes.active}
+						onClick={toggleFeed}
+					>
+						Moderator
+					</button>
+				</div>
+			)}
+		</div>
+	);
+
 	let feedContent = (
-		<Card className={classes.feedFallback}>
-			<p>
-				Write your own posts
-				<br />
-				<span>or start following someone to view his posts.</span>
-			</p>
-		</Card>
+		<Fragment>
+			{feedController}
+			<Card className={classes.feedFallback}>
+				<p>
+					Write your own posts
+					<br />
+					<span>or start following someone to view his posts.</span>
+				</p>
+			</Card>
+		</Fragment>
 	);
 
 	if (loading) {
@@ -80,25 +105,7 @@ const Feed = (props) => {
 		const postsArray = showModeratorFeed ? flaggedPosts : posts;
 		feedContent = (
 			<Fragment>
-				<div className={classes.feedController}>
-					<div className={classes.sortController}>
-						<span>Sort By:</span>
-						<select className={classes.sortSelect}>
-							<option value="top">Top</option>
-							<option value="bop">Bop</option>
-						</select>
-					</div>
-					{isModerator && (
-						<div className={classes.postsTypeController}>
-							<button
-								className={showModeratorFeed && classes.active}
-								onClick={toggleFeed}
-							>
-								Moderator
-							</button>
-						</div>
-					)}
-				</div>
+				{feedController}
 				<div className={classes.posts}>
 					{postsArray.map((post) => (
 						<Post

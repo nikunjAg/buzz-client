@@ -11,6 +11,21 @@ html {
 	font-size: 14px;
 }
 
+body::-webkit-scrollbar {
+	width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background-color: transparent;
+	/* background-color: red; */
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #777;
+	border: 1px solid #fff;
+	border-radius: 20px;
+}
+
 @media (min-width: 576px) {
 	html {
 		font-size: 15px;

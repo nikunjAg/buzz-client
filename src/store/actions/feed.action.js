@@ -1,4 +1,5 @@
 import axios from "../../axios";
+import { getRequestErrorMessage } from "../utils";
 import { addToast, errorHandler } from "./toast.action";
 
 export const FETCH_FEED_STARTED = "FETCH_FEED_STARTED";
@@ -106,6 +107,38 @@ export const flagPost = (postId) => {
 			if (post) dispatch(flagPostSuccess(postId, post));
 		} catch (error) {
 			dispatch(errorHandler(error));
+		}
+	};
+};
+
+// For Moderator
+export const FETCH_FLAGGED_POST_STARTED = "FETCH_FLAGGED_POST_STARTED";
+export const FETCH_FLAGGED_POST_SUCCESS = "FETCH_FLAGGED_POST_SUCCESS";
+export const FETCH_FLAGGED_POST_FAILED = "FETCH_FLAGGED_POST_FAILED";
+
+const fetchFlaggedPostStarted = () => {
+	return { type: FETCH_FEED_STARTED };
+};
+
+const fetchFlaggedPostSuccess = (posts) => {
+	return { type: FETCH_FEED_SUCCESS, posts };
+};
+
+const fetchFlaggedPostFailed = (error) => {
+	return { type: FETCH_FEED_FAILED, err_message: error };
+};
+
+export const fetchFlaggedPosts = () => {
+	return async (dispatch) => {
+		try {
+			dispatch(fetchFlaggedPostStarted());
+			const {
+				data: { posts },
+			} = await axios.get("/posts/flagged");
+			dispatch(fetchFlaggedPostSuccess(posts));
+		} catch (error) {
+			dispatch(errorHandler(error));
+			dispatch(fetchFlaggedPostFailed(getRequestErrorMessage(error)));
 		}
 	};
 };

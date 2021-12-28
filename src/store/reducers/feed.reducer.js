@@ -5,11 +5,15 @@ import {
 	LIKE_DISLIKE_POST_SUCCESS,
 	COMMENT_POST_SUCCESS,
 	FLAG_POST_SUCCESS,
+	FETCH_FLAGGED_POST_STARTED,
+	FETCH_FLAGGED_POST_SUCCESS,
+	FETCH_FLAGGED_POST_FAILED,
 } from "../actions/feed.action";
 import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
 const initialState = {
 	posts: [],
+	flaggedPosts: [],
 	loading: false,
 };
 
@@ -64,6 +68,23 @@ const feedReducer = (state = initialState, action) => {
 						  }
 						: post
 				),
+			};
+		case FETCH_FLAGGED_POST_STARTED:
+			return {
+				...state,
+				loading: true,
+				flaggedPosts: [],
+			};
+		case FETCH_FLAGGED_POST_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				flaggedPosts: action.posts,
+			};
+		case FETCH_FLAGGED_POST_FAILED:
+			return {
+				...state,
+				loading: false,
 			};
 		default:
 			return state;

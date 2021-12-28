@@ -1,3 +1,5 @@
+import { getRequestErrorMessage } from "../utils";
+
 export const ADD_TOAST = "ADD_TOAST";
 export const REMOVE_TOAST = "REMOVE_TOAST";
 
@@ -13,28 +15,11 @@ export const removeToast = (id) => {
 export const errorHandler = (error) => {
 	console.error(error);
 	return (dispatch) => {
-		if (error.response) {
-			dispatch(
-				addToast({
-					type: "error",
-					message: error.response.data.message,
-				})
-			);
-		} else if (error.request) {
-			dispatch(
-				addToast({
-					type: "error",
-					message: "Unable to get response.",
-				})
-			);
-		} else {
-			dispatch(
-				addToast({
-					type: "error",
-					message:
-						"Unable to send request! Please check your connection.",
-				})
-			);
-		}
+		dispatch(
+			addToast({
+				type: "error",
+				message: getRequestErrorMessage(error),
+			})
+		);
 	};
 };

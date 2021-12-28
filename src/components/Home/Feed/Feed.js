@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -6,23 +6,57 @@ import classes from "./Feed.module.css";
 import Post from "../../Post/Post";
 import Spinner from "../../UI/Spinner/Spinner";
 import Card from "../../UI/Card/Card";
-import { fetchFeed } from "../../../store/actions/feed.action";
+import {
+	fetchFeed,
+	fetchFlaggedPosts,
+	flagPost,
+	verifyPost,
+	declinePost,
+} from "../../../store/actions/feed.action";
 
 const Feed = (props) => {
-	const { posts, loading } = useSelector((state) => state.feed);
+	const [showModeratorFeed, setShowModeratorFeed] = useState(false);
+	const isModerator = useSelector((state) => state.user.isModerator);
+	const { posts, flaggedPosts, loading } = useSelector((state) => state.feed);
 	const history = useHistory();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (posts.length === 0) dispatch(fetchFeed());
-	}, [dispatch, posts.length]);
+		if (showModeratorFeed) {
+			if (flaggedPosts.length === 0) dispatch(fetchFlaggedPosts());
+		} else {
+			if (posts.length === 0) dispatch(fetchFeed());
+		}
+	}, [dispatch, showModeratorFeed, posts.length, flaggedPosts.length]);
 
+	const toggleFeed = () => {
+		setShowModeratorFeed((prev) => !prev);
+	};
+
+	/* POST ACTIONS */
 	const postClickedHandler = useCallback(
 		(postId) => {
-			console.log("Post Clicked Handler");
 			history.push(`/posts/${postId}`);
 		},
 		[history]
+	);
+	const postFlaggedHandler = useCallback(
+		(postId) => {
+			dispatch(flagPost(postId));
+		},
+		[dispatch]
+	);
+	const postVerifiedHandler = useCallback(
+		(postId) => {
+			dispatch(verifyPost(postId));
+		},
+		[dispatch]
+	);
+	const postDeclinedHandler = useCallback(
+		(postId) => {
+			dispatch(declinePost(postId));
+		},
+		[dispatch]
 	);
 
 	let feedContent = (
@@ -39,22 +73,42 @@ const Feed = (props) => {
 		feedContent = <Spinner />;
 	}
 
-	if (posts.length > 0) {
+	if (
+		(!showModeratorFeed && posts.length > 0) ||
+		(showModeratorFeed && flaggedPosts.length > 0)
+	) {
+		const postsArray = showModeratorFeed ? flaggedPosts : posts;
 		feedContent = (
 			<Fragment>
-				<div className={classes.sortController}>
-					<span>Sort By:</span>
-					<select className={classes.sortSelect}>
-						<option value="top">Top</option>
-						<option value="bop">Bop</option>
-					</select>
+				<div className={classes.feedController}>
+					<div className={classes.sortController}>
+						<span>Sort By:</span>
+						<select className={classes.sortSelect}>
+							<option value="top">Top</option>
+							<option value="bop">Bop</option>
+						</select>
+					</div>
+					{isModerator && (
+						<div className={classes.postsTypeController}>
+							<button
+								className={showModeratorFeed && classes.active}
+								onClick={toggleFeed}
+							>
+								Moderator
+							</button>
+						</div>
+					)}
 				</div>
 				<div className={classes.posts}>
-					{posts.map((post) => (
+					{postsArray.map((post) => (
 						<Post
 							key={post._id}
 							{...post}
+							onModeratorFeed={showModeratorFeed}
 							onClick={postClickedHandler}
+							onFlagged={postFlaggedHandler}
+							onVerified={postVerifiedHandler}
+							onDeclined={postDeclinedHandler}
 						/>
 					))}
 				</div>

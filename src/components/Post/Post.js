@@ -1,5 +1,4 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { Fragment } from "react";
 import { Image } from "cloudinary-react";
 
 import classes from "./Post.module.css";
@@ -7,7 +6,6 @@ import formatDate from "../../util/DateFormat";
 import Card from "../UI/Card/Card";
 import Avatar from "../UI/Avatar/Avatar";
 import PostInteraction from "./PostInteractions/PostInteraction";
-import { flagPost } from "../../store/actions/feed.action";
 
 const getStyle = (length, index) => {
 	if (length === 4) return classes.size1;
@@ -30,11 +28,13 @@ const Post = ({
 	comments,
 	isFlagged,
 	isVerified,
+	onModeratorFeed,
 	onClick,
+	onFlagged,
+	onVerified,
+	onDeclined,
 }) => {
 	console.log("Post Rendered", _id);
-	const dispatch = useDispatch();
-
 	const postClickedHandler = () => {
 		onClick(_id);
 	};
@@ -42,8 +42,18 @@ const Post = ({
 	const flagPostHandler = (event) => {
 		event.stopPropagation();
 		if (!isVerified && !isFlagged) {
-			dispatch(flagPost(_id));
+			onFlagged(_id);
 		}
+	};
+
+	const verifyPostHandler = (event) => {
+		event.stopPropagation();
+		onVerified(_id);
+	};
+
+	const declinePostHandler = (event) => {
+		event.stopPropagation();
+		onDeclined(_id);
 	};
 
 	return (
@@ -60,14 +70,36 @@ const Post = ({
 				</div>
 				<div className={classes.more}>
 					{!isVerified && (
-						<div
-							className={`${classes.action} ${
-								isFlagged && classes.active
-							}`}
-							onClick={flagPostHandler}
-						>
-							<span className="material-icons">flag</span>
-						</div>
+						<Fragment>
+							<div
+								className={`${classes.action} ${classes.flag} ${
+									isFlagged && classes.active
+								}`}
+								onClick={flagPostHandler}
+							>
+								<span className="material-icons">flag</span>
+							</div>
+							{onModeratorFeed && (
+								<div
+									className={`${classes.action} ${classes.verify}`}
+									onClick={verifyPostHandler}
+								>
+									<span className="material-icons">
+										task_alt
+									</span>
+								</div>
+							)}
+							{onModeratorFeed && (
+								<div
+									className={`${classes.action} ${classes.delete}`}
+									onClick={declinePostHandler}
+								>
+									<span className="material-icons-outlined">
+										delete
+									</span>
+								</div>
+							)}
+						</Fragment>
 					)}
 					{isVerified && (
 						<div

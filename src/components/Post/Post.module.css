@@ -66,8 +66,18 @@
 	font-size: 16px;
 }
 
-.action.active > span,
-.action:hover > span {
+.flag.active > span,
+.flag:hover > span {
+	color: #e64b4b;
+}
+
+.verify.active > span,
+.verify:hover > span {
+	color: #63bb25;
+}
+
+.delete.active > span,
+.delete:hover > span {
 	color: #e64b4b;
 }
 

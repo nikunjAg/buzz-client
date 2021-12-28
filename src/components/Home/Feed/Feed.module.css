@@ -2,6 +2,12 @@
 	min-height: 4.5rem;
 }
 
+.feedController {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .sortController {
 	margin: 10px 0px;
 	font-size: 0.85rem;
@@ -17,6 +23,32 @@
 	margin-left: 5px;
 
 	cursor: pointer;
+}
+
+.postsTypeController > button {
+	outline: none;
+	border-image: none;
+
+	cursor: pointer;
+
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background-color: #ddd;
+	color: #444;
+	font-size: 0.75rem;
+	padding: 4px 8px;
+
+	transition: 0.1s ease-in;
+}
+
+.postsTypeController > button:hover {
+	background-color: #ccc;
+}
+
+.postsTypeController > button.active {
+	background-color: #2041c5;
+	border-color: #2041c5;
+	color: #fff;
 }
 
 .feedFallback {

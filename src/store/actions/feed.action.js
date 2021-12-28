@@ -103,7 +103,7 @@ export const flagPost = (postId) => {
 		try {
 			const {
 				data: { post },
-			} = await axios.post(`/posts/${postId}/flagged`);
+			} = await axios.post(`/posts/${postId}/flag`);
 			if (post) dispatch(flagPostSuccess(postId, post));
 		} catch (error) {
 			dispatch(errorHandler(error));
@@ -117,15 +117,15 @@ export const FETCH_FLAGGED_POST_SUCCESS = "FETCH_FLAGGED_POST_SUCCESS";
 export const FETCH_FLAGGED_POST_FAILED = "FETCH_FLAGGED_POST_FAILED";
 
 const fetchFlaggedPostStarted = () => {
-	return { type: FETCH_FEED_STARTED };
+	return { type: FETCH_FLAGGED_POST_STARTED };
 };
 
 const fetchFlaggedPostSuccess = (posts) => {
-	return { type: FETCH_FEED_SUCCESS, posts };
+	return { type: FETCH_FLAGGED_POST_SUCCESS, posts };
 };
 
 const fetchFlaggedPostFailed = (error) => {
-	return { type: FETCH_FEED_FAILED, err_message: error };
+	return { type: FETCH_FLAGGED_POST_FAILED, err_message: error };
 };
 
 export const fetchFlaggedPosts = () => {
@@ -139,6 +139,39 @@ export const fetchFlaggedPosts = () => {
 		} catch (error) {
 			dispatch(errorHandler(error));
 			dispatch(fetchFlaggedPostFailed(getRequestErrorMessage(error)));
+		}
+	};
+};
+
+export const VERIFY_POST_SUCCESS = "VERIFY_POST_SUCCESS";
+export const DECLINE_POST_SUCCESS = "DECLINE_POST_SUCCESS";
+
+const verifyPostSuccess = (postId) => {
+	return { type: VERIFY_POST_SUCCESS, postId };
+};
+
+const declinePostSuccess = (postId) => {
+	return { type: DECLINE_POST_SUCCESS, postId };
+};
+
+export const verifyPost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.post(`/posts/${postId}/verify`);
+			dispatch(verifyPostSuccess(postId));
+		} catch (error) {
+			dispatch(errorHandler(error));
+		}
+	};
+};
+
+export const declinePost = (postId) => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.post(`/posts/${postId}/decline`);
+			dispatch(declinePostSuccess(postId));
+		} catch (error) {
+			dispatch(errorHandler(error));
 		}
 	};
 };

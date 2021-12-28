@@ -8,6 +8,8 @@ import {
 	FETCH_FLAGGED_POST_STARTED,
 	FETCH_FLAGGED_POST_SUCCESS,
 	FETCH_FLAGGED_POST_FAILED,
+	VERIFY_POST_SUCCESS,
+	DECLINE_POST_SUCCESS,
 } from "../actions/feed.action";
 import { SAVE_POST_SUCCESS } from "../actions/post.action";
 
@@ -85,6 +87,26 @@ const feedReducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: false,
+			};
+		case VERIFY_POST_SUCCESS:
+			return {
+				...state,
+				flaggedPosts: state.flaggedPosts.filter(
+					(post) => post._id !== action.postId
+				),
+				posts: state.posts.map((post) =>
+					post._id === action.postId
+						? { ...post, isFlagged: false, isVerified: true }
+						: post
+				),
+			};
+		case DECLINE_POST_SUCCESS:
+			return {
+				...state,
+				flaggedPosts: state.flaggedPosts.filter(
+					(post) => post._id !== action.postId
+				),
+				posts: state.posts.filter((post) => post._id !== action.postId),
 			};
 		default:
 			return state;
